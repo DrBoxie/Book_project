@@ -1,0 +1,52 @@
+\chapter{Coordinate systems}
+\label{Coordinates}
+
+\section{Discovering other dimensions}
+
+\noindent What exactly does the word dimension mean? It seems, a bit like energy, to be used in daily life in a number of different ways, once again some of which make more sense than others. For our purposes, we can think of dimension as the number of coordinates needed to uniquely determine a position in some space.\\
+
+\section{The simplest of worlds: $0$ and $1$ dimension}
+
+\noindent Imagine that the whole world is constituted of a single line. Choose a point in that space, call it the origin and denote it by O.
+\begin{center}
+\begin{tikzpicture}
+\node[gray] at (3.7,0){\textbf{X}};
+\draw (-5,0) -- (5,0);
+\draw[ultra thin] node[below=4pt]{O}(0,-0.15) -- (0,0.15);
+\end{tikzpicture}
+\end{center} 
+\noindent You find yourself in that world at the position marked with X. How could you communicate your exact location to someone else? You could have agreed beforehand that you would tell them the distance from your location to point O. To distinguish positions to the left and right of O, we add a minus sign to the ones on the left. Your location is than described as $3,7$. The position $-3.7$ is the point on the line exactly as far from O but on the left side of it. Wherever you are in this space, one single number suffices to uniquely communicate your position. We call this a $1$-dimensional space.\\
+
+\noindent Imagine now a different world, existing of just a single point. If you are in the world, you cannot be anywhere but at that point. You therefore need no coordinate whatsoever to communicate your position in the space. It is a $0$-dimensional space.
+
+\section{Just on the surface: $2$ dimensions}
+
+\subsection{Cartesian coordinates}
+
+\subsection{Polar coordinates}
+
+\section{A walk in space: $3$ dimensions}
+
+\subsection{Cylindrical coordinates}
+
+\subsection{Spherical coordinates}
+
+\tdplotsetmaincoords{60}{110}
+\pgfmathsetmacro{\rvec}{.8}
+\pgfmathsetmacro{\thetavec}{30}
+\pgfmathsetmacro{\phivec}{60}
+\begin{tikzpicture}[scale=5,tdplot_main_coords]
+      \coordinate (O) at (0,0,0);
+      \tdplotsetcoord{P}{\rvec}{\thetavec}{\phivec}
+      \draw[thick,->] (0,0,0) -- (1,0,0) node[anchor=north east]{$x$};
+      \draw[thick,->] (0,0,0) -- (0,1,0) node[anchor=north west]{$y$};
+      \draw[thick,->] (0,0,0) -- (0,0,1) node[anchor=south]{$z$};
+      \draw[-stealth,color=red] (O) -- (P);
+      \draw[dashed, color=red] (O) -- (Pxy);
+      \draw[dashed, color=red] (P) -- (Pxy);
+      \tdplotdrawarc[->]{(O)}{0.2}{0}{\phivec}{anchor=north}{$\phi$}
+      \tdplotsetthetaplanecoords{\phivec}
+      \tdplotdrawarc[->,tdplot_rotated_coords]{(0,0,0)}{0.5}{0}{\thetavec}{anchor=south west}{$\theta$}
+      \draw[dashed,tdplot_rotated_coords] (\rvec,0,0) arc (0:90:\rvec);
+      \draw[dashed] (\rvec,0,0) arc (0:90:\rvec);
+    \end{tikzpicture}
