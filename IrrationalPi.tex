@@ -1,0 +1,119 @@
+\chapter{Proof that $\pi$ is irrational}
+\label{Irrational_pi}
+
+\noindent In this appendix I give a proof of the irrationality of $\pi$. It is a highly non-trivial derivation and requires all of the following: factorials, the binomial expansion, trigonometry, limits, derivatives, the chain rule and integrals. I strongly recommend against tackling this before having mastered all of these topics. I nevertheless choose to give this proof in this text because of its mathematical beauty and because understanding it may even, once all of the aforementioned topics have been mastered, give you a mathematician's kick of pleasure as it did for me.\\
+
+\noindent We start by assuming that $\pi$ can indeed be written as a fraction of two integers:
+$$
+\pi = \frac{a}{b}
+$$
+\noindent where $a,b \in \mathbb{Z}$ and $b \neq 0$. As $\pi$ is a positive number between $3$ and $4$, we may as well assume that $a$ and $b$ are both positive without loss of generality.\\
+
+\noindent As the proof is indeed quite complicated, let me first tell you what we are going to do before doing it. First, we will define a function $f_n(x)$ using the integers $a$ and $b$. We will calculate the following integral by two different methods: $\int\limits_{0}^{\pi} f_n(x) \sin x \; dx$. The first method will show as that this integral is an integer. While the second method will show the integral is strictly between $0$ and $1$, and therefore not an integer. The integral cannot be an integer and not an integer at the same time. So that we will conclude that the assumption from which it all started, the rationality of $\pi$, must be false.\\
+
+\noindent We define the function
+$$
+f_n\left( x \right) = \frac{\left( a - b x \right)^n x^n }{n!} 
+$$
+This function has a parameter $n$ which can be any strictly positive integer. Let us look at a number of properties of this function $f_n$:
+\begin{enumerate}
+\item $f_n\left( 0 \right) = 0$.\\
+\item \label{TitelProperty} $f_n \left( \pi-x \right) = f_n \left( x \right)$.\\
+\noindent To see this, remember that $\pi = \frac{a}{b}$. Plugging $\pi - x$ into the function $f_n(x)$ gives
+\begin{eqnarray*}
+f_n \left( \pi - x \right) & = \frac{\left( a - b \left( \frac{a}{b}-x \right) \right)^n \left(\frac{a}{b} - x\right)^n}{n!} \\
+ & = \frac{\left( a - a + bx \right)^n \left( \frac{a}{b}-x\right)^n}{n!}\\
+ & = \frac{b^n x^n \left( \frac{a}{b}-x \right)^n}{n!} \\
+& = \frac{x^n \left( a - bx \right)^n}{n!} \\
+ & = f_n \left( x \right)
+\end{eqnarray*}
+\item $f_n \left(\pi \right) = 0$.\\
+\noindent Plugging in $0$ for $x$ in the previous property gives $f_n(\pi - 0) = f_n(0)$ which we know equals $0$ from the first property.
+\item $f_n$ is a polynomial of degree $2n$ with no terms of degree smaller than $n$.
+\item $\forall k \in \mathbb{N}_0: \left.\frac{d^k f_n(x)}{dx^k}\right|_{x=0}$ is an integer.\\
+\noindent We just saw that $f_n(x)$ is a polynomial of degree $2n$ with no terms of order less than $n$. We separate the proof of this property into 3 cases, depending on the value of $k$:
+\begin{enumerate}[i]
+\item $\bf{n > k:}$ as $k$ is smaller than the degree of the term of lowest degree of the polynomial, all terms retain an $x$ of non-zero degree. Consequently, all of them disappear when plugging in $x=0$.
+\item $\bf{ n \leq k \leq 2n:}$ the polynomial $f_n(x)$ itself can be written out as
+\begin{eqnarray*}
+f_n(x) & = \frac{x^n}{n!} \sum\limits_{i=0}^{n} C^{n}_{i} a^{n-i}\left( -bx \right)^i \\
+ & = \sum\limits_{i=0}^{n} C^{n}_{i}\frac{\left( - 1 \right)^i}{n!}a^{n-i} b^i x^{n+i}
+\end{eqnarray*}
+\noindent The coefficients $C^{i}_{n}$ are known as the binomial coefficients, all of which can be read off Pascale's triangle, and are all integer. Taking the $k^{th}$ derivative of this with respect to $x$ gives:
+\begin{eqnarray*}
+\frac{d^k f_n(x)}{dx^k} & = \sum\limits_{i=k-n}^{n}C^{n}_{i} \frac{\left( -1 \right)^{i}}{n!} a^{n-i} b^i \frac{(n+i)!}{(n+i-k)!} x^{n+i-k}
+\end{eqnarray*}
+\noindent When plugging in $0$ for $x$ in the derivative, we are left with the coefficient of the $0^{th}$ order term.
+\begin{eqnarray*}
+\left. \frac{d^k f_n(x)}{dx^k} \right|_{x=0} & = C^{n}_{k-n} \frac{\left( -1 \right)^{k-n}}{n!} a^{2n-k} b^{k-n} k! \\
+ & = C^{n}_{k-n}\left( -1 \right)^{k-n} a^{2n-k} b^{k-n} \frac{k!}{n!}
+\end{eqnarray*}
+\noindent Because $k\geq n$, the fraction $\frac{k!}{n!}$ is equal to $k \left( k-1 \right) \left( k-2 \right) \cdots \left( n+2 \right) \left( n+1 \right)$, which is an integer. All the other coefficients are integers as well, which proves the assessment for the case $n \leq k \leq 2n$.
+\item $\bf{2n < k:}$ because $k$ is larger than the degree of the polynomial $f_n(x)$, taking $k$ times its derivatives cancels out all its terms and we are left with $0$.
+\end{enumerate}
+\item $\forall k \in \mathbb{N}_0: \left.\frac{d^k f_n(x)}{dx^k}\right|_{x=\pi}$ is an integer.\\
+\noindent This is consequence of the previous property, together with property number \ref{TitelProperty} and the chain rule:
+\begin{eqnarray*}
+\frac{d^k}{dx^k}f_n\left( x \right)  = & \frac{d^k}{dx^k} f_n \left( \pi -x \right) \\
+= &  \left( -1 \right)^{k}\frac{d^k f_n}{dx^k}\left( \pi - x \right)
+\end{eqnarray*}
+\noindent Evaluation both sides in $x=0$ gives
+$$
+\frac{d^k}{dx^k}f_n\left( 0 \right)  = 
+\left( -1 \right)^{k}\frac{d^k f_n}{dx^k}\left( \pi \right)
+$$
+\noindent The LHS is an integer, and therefore so is the RHS.
+\end{enumerate}
+\noindent We already have quite a few properties of $f_n$. But we need more. We define an even more beautiful function $g_n(x)$ by\footnote{We use the conventional notation $$ f^{(k)}(x) = \frac{d^k}{dx^k} f (x) $$}
+$$
+g_n(x) = f_n(x) - f^{(2)}_{n}(x) + f^{(4)}_{n}(x) - f^{(6)}_{n}(x) + \cdots + \left( -1 \right)^{n} f^{(2n)}_{n}(x)
+$$
+\noindent The function $g_n$ is thus defined as the alternating sum of all of the even derivatives of $f_n$. We consider a number of properties of this new function $g_n(x)$.
+\begin{enumerate}
+\item $g_n(0)$ is an integer.\\
+\noindent This is because $f_n$ as well as all its derivatives are integer when evaluated in $x=0$.
+\item $g_n(\pi)$ is an integer.\\
+\noindent This is because $f_n$ as well as all its derivatives are integer when evaluated in $x=\pi$.
+\item $g_n (x) + g_{n}^{(2)}(x) = f_n(x)$.\\
+\noindent The second derivative of $g_n$ is equal to
+$$
+g_n^{(2)}(x) = f^{(2)}_{n}(x) - f^{(4)}_{n}(x) + f^{(6)}_{n}(x) - \cdots - \left( -1 \right)^{n} f^{(2n)}_{n}(x)
+$$
+\noindent Adding $g_n$ to this, cancels out all terms except for the first one of $g_n$, namely $f_n(x)$ itself.
+\end{enumerate}
+\noindent I imagine you are wondering whether all of this is actually leading anywhere. Trust me, it does. And you are almost there. For now, let us evaluate the derivative of the following expression: $g_n'(x) \sin x - g_n(x) \cos x $:
+\begin{eqnarray*}
+\frac{d}{dx} \left[ g_n'(x) \sin x - g_n(x) \cos x \right] = & g_{n}^{(2)} \sin x + g_n'(x) \cos x - g_n'(x) \cos x + g_n(x) \sin x \\
+ = & \left( g^{(2)}_{n}(x) + g_n(x) \right) \sin x \\
+= & f_n (x) \sin x
+\end{eqnarray*}
+\noindent We will now evaluate the integral of $f_n(x) \sin x$ in two different ways each of which will yield a different result.
+\begin{itemize}
+\item We showed that $\frac{d}{dx} \left[ g_n'(x) \sin x - g_n(x) \cos x \right] = f_n (x) \sin x$ which means that
+\begin{eqnarray*}
+\int\limits_{0}^{\pi} f_n(x) \sin x \; dx = & \left. \left[ g_n'(x) \sin x - g_n(x) \cos x \right]\right|_{0}^{\pi} \\
+= & g_n'(\pi) \sin \pi - g_n (\pi) \cos \pi - g_n' (0) \sin 0 + g_n(0) \cos 0 \\
+= & g_n(\pi) + g_n(0)
+\end{eqnarray*}
+\noindent From the properties of $g_n$ we mentioned above, we conclude that \textbf{the integral is an integer}.
+\item Instead of solving the integral explicitly, we can determine upper and lower bounds for it. The range of integration is $0<x<\pi$ so that $\sin x > 0$. As $\pi = \frac{a}{b}$, we also have that $a - bx >0 $ within the integration range. This means the integrand itself and therefore the integral is strictly positive:
+$$
+0 < \int\limits_{0}^{\pi} f_n(x) \sin x \; dx
+$$
+\noindent As $ 0 < \sin x < 1$ within the integration range, omitting the sine results in a larger integral. In this same range, replacing $x$ by $\pi$ and $a-bx$ by $a$ yields a result wich is strictly greater:
+\begin{eqnarray*}
+\int\limits_{0}^{\pi} f_n(x) \sin x \; dx & = &   \int\limits_{0}^{\pi} \frac{\left( a - bx \right)^n x^n}{n!} \sin x \; dx \\
+ & < & \int\limits_{0}^{\pi} \frac{a^n \pi^n}{n!} dx \\
+& = & \frac{a^n}{n!}\pi^{n+1}
+\end{eqnarray*}
+\noindent All of the above holds for any value of $n$. What does this upper bound for the integral do as $n$ becomes larger? Well, the factorial diverges faster than exoponential functions:
+$$
+\lim\limits_{n \rightarrow \infty} \frac{a^n}{n!}\pi^{n+1} = 0
+$$
+\noindent This means there exists a value of $n$ such that $\frac{a^n}{n!}\pi^{n+1} < 1$
+$$
+ 0 > \int\limits_{0}^{\pi} f_n(x) \sin x \; dx > 1
+$$
+\noindent By this second method we find the integral cannot be an integer.
+\end{itemize}
+\noindent As the integral cannot be simultaneously an integer and not an integer, we at long last come to the conclusion that $\pi$ cannot be written as the ratio of two integers and is therefore irrational.

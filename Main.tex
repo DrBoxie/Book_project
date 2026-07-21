@@ -1,0 +1,95 @@
+\documentclass[10pt,a4paper,titlepage,openany]{book}
+
+%%\usepackage{fourier}
+%%\DeclareFontFamily{U}{futm}{}
+%%\DeclareFontShape{U}{futm}{m}{n}{
+%%  <-> fourier-bb % changed from .92 to 1
+%%  }{}
+%%\DeclareMathAlphabet{\mathbb}{U}{futm}{m}{n}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{mathtools, amsmath, amssymb, amsfonts, textcomp, graphicx, enumerate, mathrsfs, rotating, wasysym, pdfpages, todonotes, tkz-euclide, pst-node, lmodern, textcomp, float, caption, tikz, framed, titlepic, tikz-3dplot, pgfplots, siunitx, color, tikzsymbols, bm, dirtytalk, epigraph}
+\usepackage[raggedrightboxes]{ragged2e}
+\usetikzlibrary{positioning, shapes, fit, arrows, plotmarks, svg.path, datavisualization, quotes, angles, calc, matrix, patterns}
+\definecolor{myblue}{RGB}{56,94,141}
+\usetkzobj{all}
+\pgfplotsset{compat=1.15}
+\graphicspath{ {Figures/} }
+\renewcommand{\today}{\ifcase \month \or January\or February\or March\or %
+April\or May \or June\or July\or August\or September\or October\or November\or %
+December\fi, \number \year}
+%
+\newcommand\irregularcircle[2]{% radius, irregularity
+	\pgfextra {\pgfmathsetmacro\len{(#1)+rand*(#2)}}
+  +(0:\len pt)
+  \foreach \a in {10,20,...,350}{
+    \pgfextra {\pgfmathsetmacro\len{(#1)+rand*(#2)}}
+    -- +(\a:\len pt)
+  } -- cycle
+}
+
+\title{Physics: based on a true story}
+\date{\today}
+\author{Eliran Boksenbojm}
+%\titlepic{\includegraphics[width=0.5\textwidth]{logorebus}}
+
+\begin{document} 
+%
+\newcommand\bigangle[2][]{% 
+    \draw[->,domain=0:#2,variable=\t,samples=200,>=latex,#1]
+      plot ({(\t+#2)*cos(\t)/(#2)},{(\t+#2)*sin(\t)/(#2)}) 
+			node[right=.5cm] {$#2^\circ$};
+		}
+
+\frontmatter
+
+\begingroup
+\renewcommand{\thetable}{\Roman{table}}
+
+\endgroup
+
+\maketitle
+
+\addcontentsline{toc}{chapter}{Contents}
+\tableofcontents
+\input{Symbols.tex}
+\input{Greek.tex}
+%\input{Acknowledgement.tex}
+
+\mainmatter
+
+\input{Science_physics_philo.tex}
+\input{Number_Sets.tex}
+\input{Basic_operations.tex}
+\input{Intro_physics.tex}
+\input{functions.tex}
+\input{Geometry_Trigonometry.tex}
+\input{Intro_physics_2.tex}
+%
+%%\input{Vectors.tex}
+%%\input{Other_Coordinates.tex}
+%%\input{Limits.tex}
+%%\input{Derivatives.tex}
+%%\input{Integrals.tex}
+%%\input{Kinematics.tex}
+%%\input{Series.tex}
+%%\input{Formal_Logic.tex}
+%%\input{Periodic_Behaviour.tex}
+%%\input{Differential equations}
+%%\input{Dynamics (including conservation laws revisited)}
+%%\input{Electromagnetism revisited}
+%%\input{Principle of least action}
+%%\input{Introduction to probability theory}
+%%\input{Matrices, determinants, eigenvalues and eigenvectors}
+%%\input{Thermodynamics & statistical physics}
+%
+\appendix
+%
+\input{IrrationalPi.tex}
+%
+%%\backmatter
+%%
+%%\input{Bibliography.tex}
+
+\end{document}

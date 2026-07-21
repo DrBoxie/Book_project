@@ -1,0 +1,1070 @@
+\chapter{The function of functions}
+\label{Chap_Func}
+
+\section{What is a function?}
+\label{Whatsafunction}
+\noindent In its most basic form a function is a machine into which a number is fed and out comes a resulting number. Let us consider a simple example:
+\begin{equation}
+\label{first_func}
+	f(x) = 2x + 7
+\end{equation}
+The left-hand-side (LHS) should be read as '' \textit{f is a function of x}''. Here $f$ is the name of the function and $x$ is called its variable or argument. This $x$ is merely a placeholder for whatever number we plug into the function. We say that the function $f$ maps $x$ onto the number $f(x)$,  which in the example above equals $2x+7$. Thus, the right-hand-side (RHS) tells us what $x$ is mapped onto:
+\begin{eqnarray*}
+	f(4) = 2 \times 4 + 7 = 15 \\
+	f(0,7) = 2 \times 0,7 + 7= 8,4 \\
+	f(-5) = 2 \times (-5) + 7 = -3
+\end{eqnarray*}
+\noindent Just as with children, if we made them, we are free to name them as we please. I simply chose to call the function above $f$ and its argument $x$. I could as well have chose the following:
+\begin{equation}
+\label{OtherName}
+h(s) = 2s  + 7
+\end{equation}
+The functions defined in (\ref{first_func}) and (\ref{OtherName}) map all possible values of their arguments onto the same numbers: 
+\begin{eqnarray*}
+	f(4) = h(4) = 15 \\
+	f(0,7) = h(0,7)= 8,4 \\
+	f(-5) = h(-5) = -3
+\end{eqnarray*}
+\noindent No distinction needs to be made between these 2 functions: $ f = h$.
+\noindent Another example of a function is
+\begin{equation}
+\label{FuncG}
+g(x) = x^3 + \frac{x}{2}
+\end{equation}
+\noindent Plugging a couple of values into $g$ gives: 
+\begin{eqnarray}
+	& g(4) = 4^3 + \frac{4}{2} = 64 + 2 = 66 \nonumber\\
+	& g(100)  =  100^3 + \frac{100}{2} = 1\: 000\: 000 + 50 = 1\:000\:050\nonumber
+\end{eqnarray}
+\noindent Now that we have a basic idea of what a function is we consider different ways of representing functions.
+
+\section{Representation of functions}
+
+A function can be represented in several ways which allows us to study and use it in a wide range of ways.Though a single representation is sufficient to uniquely define or determine a function, it is often useful to be able to switch between different representations in order to analyze some physical system from a slightly different point of view. In later chapters we will encounter examples where each of these representations will play a role in some physical context.
+
+\subsection{Write it out explicitly}
+\label{Expl_Func}
+\noindent One way of representing a function is to \textbf{explicitly} write down what it does with its argument:
+$$
+m:\mathbb{Z} \rightarrow \mathbb{N}: x \rightarrow x^2
+$$
+Or equivalently
+$$
+m:\mathbb{Z} \rightarrow \mathbb{N}: m(x) = x^2
+$$
+This is a mathematician's way of writing "`we consider a function called $m$ into which we are only allowed to insert whole numbers (i.e. the elements of $\mathbb{Z}$) and the output will always be a natural number (i.e. elements of $\mathbb{N}$), more specifically it maps every whole number $x$ to $x^2$"'. Notice the following points:
+\begin{itemize}
+\item No matter which whole number is plugged into $m$ ,the output is indeed always a natural number.
+\item There are natural numbers that cannot be an output of $m$. For instance the number $3$ is not the square of any whole number and will therefore not be the output of any value we are allowed to plug into $m$.
+\item The only allowed inputs of $m$ are whole numbers. Writing $m(3,2)$ is simply meaningless. This of course does not mean that the number $3,2$ does not have a square, but only that the machine we invented and called $m$ can not take as input a number that is not whole. If we want a function that gives the square of all real numbers, we need to create a new function\footnote{The set $\mathbb{R}^+ = \left\{ x | x \in \mathbb{R} \textit \; {and} \;  x \geq 0 \right\}$ is the set of all positive real numbers.}: $n : \mathbb{R} \rightarrow \mathbb{R}^+ : x \rightarrow x^2$. The output for any whole number of $m$ and of $n$ is clearly the same. But for non-whole numbers like $3,2$ their outputs are not the same as $n(3,2) = 10,24$ while $m(3,2)$ simply does not exist. It thus follows that $m \neq n$.
+\item The explicit specification of the domain and codomain ($\mathbb{Z}$ and $\mathbb{N}$, respectively, in the definition of $m$ above) will often be omitted for brevity whenever there is no real risk of confusion.\\
+\end{itemize}
+\noindent Another example:
+\begin{equation}
+\label{FuncH}
+h: \left[ 0,1 \right] \rightarrow \left\{ 0,1 \right\} : h(x) = \left\{
+\begin{array}{ll}
+ 0 \ \ \ \ \ \ \textit{if } x<0,5\\
+1 \ \ \ \ \ \ \textit{if } x\geq 0,5
+\end{array}
+\right.
+\end{equation}
+Note the difference between the domain and codomain. The domain is $\left[ 0,1 \right]$ which is the set of all numbers between (and including) $0$ and $1$. The codomain $\left\{ 0,1 \right\}$ is the set whose only two elements are $0$ and $1$. Function $h$ takes as input any number $x$ from $\left[ 0,1 \right]$ and maps it onto either $0$ or $1$ depending on whether $x$ itself is less than $0,5$ or not.
+
+\subsection{Here is where we draw the line}
+
+\noindent Functions can also be represented graphically. Draw a horizontal line representing the argument $x$ of the function and perpendicular to it a vertical line representing the output $f(x)$. We also add tick marks to label the values on these axes.
+\begin{center}
+\begin{tikzpicture}[xscale=0.2,yscale=0.15]
+	\draw[step=5,gray,very thin] (-19,-19) grid (19,19);
+  \draw[->] (-22,0) -- (22,0) node[right] {$x$};
+  \draw[->] (0,-22) -- (0,22) node[above] {$f(x)$};
+ \foreach \x/\xtext in {-20/-20, -15/-15, -10/-10, -5/-5, 0/ , 5/5, 10/10, 15/15, 20/20}
+    \draw[shift={(\x,0)}] (0pt,10pt) -- (0pt,-10pt) node[below] {$\xtext$};
+  \foreach \y/\ytext in {-20/-20, -15/-15, -10/-10, -5/-5, 0/ , 5/5, 10/10, 15/15, 20/20}
+    \draw[shift={(0,\y)}] (10pt,0pt) -- (-10pt,0pt) node[left] {$\ytext$};
+\end{tikzpicture}
+\end{center}
+\noindent On this system of axes known as a Cartesian system (after R. Descartes) we plot the function itself. As a first example we come back to the function $f$ defined in (\ref{first_func}): $f(x)= 2x + 7$. Every $x$ is mapped to $2x + 7$. So for instance $3$ is mapped to $13$ (because $2\times 3 + 7 = 6+7=13$). We therefore mark the point $\left(3,13\right)$\footnote{The notation $\left( a,b \right)$ means the point whose horizontal and vertical components are $a$ and $b$, respectively. The point $\left( 0,0 \right)$ is often called the "`\textbf{origin}"'.}:
+\begin{center}
+\begin{tikzpicture}[scale=0.15]
+  \draw[step=5,gray,very thin] (-19,-19) grid (19,19);
+	\draw[->] (-21,0) -- (21,0) node[right] {$x$};
+  \draw[->] (0,-21) -- (0,21) node[above] {$f(x)$};
+	\draw[dashed,ultra thick] (0,13) -- (3,13)--(3,0);
+	\draw [black, fill=gray, ultra thick] (3,13) circle [radius=20pt];
+ \foreach \x/\xtext in {-20/-20, -15/-15, -10/-10, -5/-5, 0/ , 5/5, 10/10, 15/15, 20/20}
+    \draw[shift={(\x,0)}] (0pt,10pt) -- (0pt,-10pt) node[below] {$\xtext$};
+  \foreach \y/\ytext in {-20/-20, -15/-15, -10/-10, -5/-5, 0/ , 5/5, 10/10, 15/15, 20/20}
+    \draw[shift={(0,\y)}] (2pt,0pt) -- (-2pt,0pt) node[left] {$\ytext$};
+\end{tikzpicture}
+\end{center}
+\noindent The dashed lines were added to emphasize that the point $\left( 3,13 \right)$ corresponds to $3$ on the horizontal axis and $13$ on the vertical one. We call them the horizontal and vertical components of the point $\left( 3,13 \right)$. We now add some other points related by the function $f$: $\left( 0,7 \right)$, $\left( 6,19 \right)$ and $\left( -5,-3 \right)$:
+\begin{center}
+\begin{tikzpicture}[scale=0.15]
+\draw[step=5,gray,very thin] (-19,-19) grid (19,19);
+  \draw[->] (-21,0) -- (21,0) node[right] {$x$};
+  \draw[->] (0,-21) -- (0,21) node[above] {$f(x)$};
+	\draw[dashed,ultra thick] (0,7) -- (0,0);
+	\draw[dashed,ultra thick] (0,19) -- (6,19)--(6,0);
+	\draw[dashed,ultra thick] (0,-3) -- (-5,-3)--(-5,0);
+	
+	\draw [black, fill=gray, ultra thick] (3,13) circle [radius=20pt];
+	\draw [black, fill=gray, ultra thick] (0,7) circle [radius=20pt];
+	\draw [black, fill=gray, ultra thick] (-5,-3) circle [radius=20pt];
+	\draw [black, fill=gray, ultra thick] (6,19) circle [radius=20pt];
+
+ \foreach \x/\xtext in {-20/-20, -15/-15, -10/-10, -5/-5, 0/ , 5/5, 10/10, 15/15, 20/20}
+    \draw[shift={(\x,0)}] (0pt,10pt) -- (0pt,-10pt) node[below] {$\xtext$};
+
+  \foreach \y/\ytext in {-20/-20, -15/-15, -10/-10, -5/-5, 0/ , 5/5, 10/10, 15/15, 20/20}
+    \draw[shift={(0,\y)}] (2pt,0pt) -- (-2pt,0pt) node[left] {$\ytext$};
+\end{tikzpicture}
+\end{center}
+\noindent By drawing all the points $\left(x,f(x)\right)$ for all the values $x$ is allowed to take (in this case we implicitly assumed that the domain is $\mathbb{R}$), we get the \textbf{graph} of the function $f$:
+\begin{center}
+\begin{tikzpicture}[scale=0.15]
+	\draw[step=5,gray,very thin] (-19,-19) grid (19,19);
+	\clip (-21,-21) rectangle (25,25);
+  \draw[->] (-21,0) -- (21,0) node[right] {$x$};
+  \draw[->] (0,-21) -- (0,21) node[above] {$f(x)$};
+	\draw[gray, ultra thick, domain=-20:20] plot (\x, {2*\x+7});
+	
+ \foreach \x/\xtext in {-20/-20, -15/-15, -10/-10, -5/-5, 0/ , 5/5, 10/10, 15/15, 20/20}
+    \draw[shift={(\x,0)}] (0pt,10pt) -- (0pt,-10pt) node[below] {$\xtext$};
+
+  \foreach \y/\ytext in {-20/-20, -15/-15, -10/-10, -5/-5, 0/ , 5/5, 10/10, 15/15, 20/20}
+    \draw[shift={(0,\y)}] (2pt,0pt) -- (-2pt,0pt) node[left] {$\ytext$};
+\end{tikzpicture}
+\end{center}
+\noindent Functions represented by a single straight line are called \textbf{linear}\footnote{Unlike physicists, mathematicians often add the condition of the graph having to pass through $\left( 0,0 \right)$ in order to call the function linear.}. Functions $g$ and $h$ defined in (\ref{FuncG}) and (\ref{FuncH}) are both non-linear and have the following graphs:
+\begin{center}
+	%graph of g
+\begin{tikzpicture}[xscale=1, yscale = 0.1]
+	
+	%\draw[step=5,gray,very thin] (-3,-29) grid (3.4,31);
+	\draw[->] (-3.1,0) -- (3.5,0) node[right] {$x$};
+  \draw[->] (0,-30) -- (0,32) node[above] {$g(x)$};
+	\draw[gray, ultra thick, domain=-3:3] plot (\x, {(\x*\x*\x +\x*0.5});
+	
+ \foreach \x/\xtext in { -3/-3,-2/-2, -1/-1, 0/ , 1/1, 2/2, 3/3 }
+    \draw[shift={(\x,0)}] (0pt,10pt) -- (0pt,-10pt) node[below] {$\xtext$};
+
+  \foreach \y/\ytext in {-30/-30, -24/-24, -18/-18, -12/-12, -6/-6, 0/ , 6/6, 12/12, 18/18, 24/24, 30/30}
+    \draw[shift={(0,\y)}] (2pt,0pt) -- (-2pt,0pt) node[left] {$\ytext$};
+	
+\end{tikzpicture}
+%graph of h
+\begin{tikzpicture}[xscale = 5,yscale=6]
+%\draw[step=5,gray,very thin] (-0.1,0.1) grid (1.1,1.1);
+	\draw[->]  (0,-0.1)--(0,1.1);
+	\draw[->]  (-0.1,0)--(1.1,0);
+	\node [right] at (1.1,0) {$x$};
+	\node [above] at (0,1.1) {$h(x)$};
+	\draw[blue, ultra thick] (0,0) -- (0.5,0);
+	\draw[blue, ultra thick] (0.5,1) -- (1,1);
+	 \draw[blue, very thick](0.5, 0) circle (0.3mm);
+	\filldraw [blue] (0.5,1) circle (0.3mm);
+	
+ \foreach \x/\xtext in {0/, 0.2/0.2, 0.4/0.4, 0.6/0.6, 0.8/0.8 , 1/1}
+    \draw[shift={(\x,0)}] (0pt,0.3pt) -- (0pt,-0.3pt) node[below] {$\xtext$};
+
+ \foreach \y/\ytext in {0/, 0.2/0.2, 0.4/0.4, 0.6/0.6, 0.8/0.8 , 1/1}
+    \draw[shift={(0,\y)}] (0.3pt,0pt) -- (-0.3pt,-0pt) node[left] {$\ytext$};
+	
+\end{tikzpicture}
+\end{center}
+\noindent The vertical axis of the graph of $g$ (on the left) is "`zoomed in"' to fit on the page. Therefore, keep in mind that the part of the vertical axis shown represents a line $10$ times longer than the horizontal axis\footnote{This is not uncommon, so make sure to always look at the units of the axes.}. On the right we plot the graph of $h$. As long as $x<\frac{1}{2}$ the value of $h$ equals $0$. At $x=\frac{1}{2}$ the value of $h$ is \textbf{not} $0$ but $1$ which is emphasized by the hollow circle at $\left( \frac{1}{2},0 \right)$ and the filled circle at $\left( \frac{1}{2},1 \right)$. From $x=\frac{1}{2}$ onwards $h$ has the value $1$.
+
+\subsection{Be a little implicit}
+
+\noindent In section \ref{Expl_Func} we saw that one way of representing a function is to explicitly write out its action on its argument. An example of this is
+\begin{equation}
+\label{cubicExamp}
+f(x) = x^5
+\end{equation}
+\noindent This is nothing but saying that we plug in any real number $x$ into the function $f$ and out comes its fifth power. The corresponding graph is\footnote{ Note once again that the vertical axis is "`zoomed out"' compared to the horizontal axis.}:
+\begin{center}
+\begin{tikzpicture}[xscale=1.2, yscale = 0.01]
+	
+%	\clip (-21,-1100) rectangle (24,1200);
+
+	\draw[->] (-3.1,0) -- (3.5,0) node[right] {$x$};
+  \draw[->] (0,-250) -- (0,250) node[above] {$f(x)$};
+	\draw[blue, ultra thick, domain=-3:3] plot (\x, {(\x*\x*\x*\x*\x});
+	
+ \foreach \x/\xtext in { -3/-3, -2/-2, -1/-1, 0/ , 1/1, 2/2, 3/3 }
+    \draw[shift={(\x,0)}] (0pt,10pt) -- (0pt,-10pt) node[below] {$\xtext$};
+
+  \foreach \y/\ytext in { -200/-200, -150/-150, -100/-100, -50/-50,  0/ , 50/50, 100/100, 150/150, 200/200}
+    \draw[shift={(0,\y)}] (2pt,0pt) -- (-2pt,0pt) node[left] {$\ytext$};
+	
+\end{tikzpicture}
+\end{center}
+\noindent This same graph can be gotten in a slightly different way. We consider all points of the form $\left( x,y \right)$ that obey the condition
+\begin{equation}
+\label{ImplNotation}
+y-x^5 = 0
+\end{equation}
+We compare the set of points obeying equation (\ref{cubicExamp}) with the set of points obeying equation (\ref{ImplNotation}). They are of course the same:
+$$
+\left\{ \left(x,f(x)\right)| f(x) = x^5  \right\} = \left\{ \left( x,y \right) | y - x^5 = 0 \right\}
+$$
+Plotting these 2 sets on a Cartesian system as above would give exactly the same graph. The representation on the left is known as the explicit representation of the function while the one on the right is its implicit representation. You may say that calling these a "`different"' representation is a bit of a stretch. We did not actually change anything. We only
+\begin{enumerate}
+\item changed the name of the function from $f$ to $y$.
+\item omitted the argument of $y$.
+\item replaced the condition $y = x^5$ by $y - x^5 = 0$.
+\end{enumerate}
+\noindent None of these actually changes anything. We are indeed allowed to rename the function and omit the explicit mention of its argument. The third action amounts to subtracting $x^5$ from both the LHS and the RHS\footnote{Subtracting the same value from both sides of an equation does not change it. If it is true that $a = b$ than it also has to be true that $a-c=b-c$ not matter what the value of $c$ is.}. We still consider all the points of the form $\left(a,b\right)$ where the value of $b$ equals $a^5$.\\
+
+\noindent The main difference is the way we think about the points on the graph. In the \textbf{explicit} representation a vertical component is determined for every value in the domain. By definition an explicit equation is of the form $y=f(x)$ such that on the LHS only $y$ appears (no $y^2$ for instance) and on the RHS there is no mention of $y$. While in the \textbf{implicit} representation we think of the graph as all the points $(x,y)$ obeying some condition. Of course, if a point $\left( x,y\right)$ obeys the relation $y-x^5=0$, then it clearly also obeys $y = x^5$. This should not be surprising as both represent the same thing. There are nevertheless many examples where going from the implicit to the explicit representation is not as straightforward as it may seem at first sight and it is often even impossible. Let us consider two examples: 
+\begin{enumerate}
+\item The implicit equation
+$$
+y^3 -2 x + 5 = 0
+$$
+can be rewritten in explicit form as
+$$
+y(x) = \sqrt[3]{2x - 5} 
+$$
+\item The implicit equation 
+$$
+3y^{19} - 4y^2 +17x^3 -2x +6 = 0
+$$
+can not be written in the form form $y(x) = f(x)$ where the RHS does not contain any $y$. Try as you may, you will not be able to find an explicit equation representing this function\footnote{In many cases the "`function"' gotten from an implicit equation is not a function strictly speaking. It does not obey the definition of what mathematicians call a function. But the exact definition is of no importance to us in this discussion. It remains true that the set of all points $x$ and $y$ obeying relations as described in the text can be drawn and can be used to describe physical quantities whether in the explicit or the implicit representation.}. 
+\end{enumerate}
+
+\subsection{Parametric representation}
+
+\noindent The final representation of functions we discuss here is known as \textbf{parametrization}. Instead of thinking of $y$ as a function of $x$ as in section (\ref{Expl_Func}), we now think of both $x$ and $y$ as being dependent on some parameter $t$. In physical applications this $t$ may represent time but could in principle be any other parameter. The function is then written as $\left( x(t), y(t) \right)$. This probably sounds a bit abstract, so let us look at an example. We first choose the range of values that $t$ can take. For the sake of this example, we choose the parameter $t$ to be in $\left[ 0,16 \right]$ and define the function as
+\begin{equation}
+\label{ParamExamp}
+\left\{
+\begin{array}{ll}
+ x(t) = \frac{t}{2} \\\\
+y(t) = t^2 
+\end{array}
+\right. 
+\end{equation}
+Both $x$ and $y$ are functions of $t$. For every value of $t$, a value for both $x$ and $y$ is determined from (\ref{ParamExamp}). For instance, for $t=0$ we find $x(0) = 0$ and $y(0)=0$ so that we mark the point $\left( 0,0 \right)$ on the graph. And for $t=3$ we have $x(3)=1,5$ and $y(3)=9$, therefore we mark $\left( 1,5 ; 9 \right)$. If we do this for all values of $t$ in $\left[ 0,16 \right]$ and plot all the points we find the graph of this function:
+\begin{center}
+\begin{tikzpicture}[xscale=1,yscale=0.01]
+	
+  \draw[->] (-0.5,0) -- (8.9,0) node[right] {$x$};
+  \draw[->] (0,-10) -- (0,320) node[above] {$y$};
+	\draw[blue, ultra thick, domain=0:8] plot (\x, {4*\x*\x});
+	
+ \foreach \x/\xtext in {0/, 2/2, 4/4, 6/6, 8/8 }
+    \draw[shift={(\x,0)}] (0pt,200pt) -- (0pt,-200pt) node[below] {$\xtext$};
+
+  \foreach \y/\ytext in {0/ , 100/100, 200/200, 300/300}
+    \draw[shift={(0,\y)}] (2pt,0pt) -- (-2pt,0pt) node[left] {$\ytext$};
+\end{tikzpicture}
+\end{center}
+\noindent This does not look very different from the plots of the functions we discussed above. But the parametric representation allows for a wide range of figures that are impossible to write out in explicit form. Here are a couple of examples:
+\begin{center}
+\begin{tikzpicture}[scale=0.2]
+\draw[domain=1:14,samples = 5000,smooth, blue, very thick] plot[parametric,id=spiral-diagonal] function{(2*t) + (2*cos(14*t)) + (1/t),(2*t) + (2*sin(15*t)) + (1/t)};
+\draw[->] (-0.1,0) -- (30,0) node[right] {$x$};
+\draw[->] (0,-0.1) -- (0,30) node[above] {$y$};
+\end{tikzpicture}
+\begin{tikzpicture}[scale=0.6]
+\draw[domain=-8:8,samples = 1000,smooth, blue, very thick] plot[parametric,id=dream-catcher] function{6*sin(11.92*t)*cos(cos(18.5*t)),6*cos(11.92*t)*cos(11.92*t)*cos(11.92*t)*cos(11.92*t)*sin(sin(18.5*t))};
+\draw[->] (-6.5,0) -- (6.5,0) node[right] {$x$};
+\draw[->] (0,-6) -- (0,6) node[above] {$y$};
+\end{tikzpicture}
+\end{center}
+\begin{center}
+\begin{tikzpicture}[scale=0.2]
+\draw[domain=0:2*pi,samples = 1000,smooth, red, ultra thick] plot[parametric,id=heart] function{16*sin(t)*sin(t)*sin(t),13*cos(t)-5*cos(2*t)-2*cos(3*t)-cos(4*t)};
+\draw[->] (-18,0) -- (18,0) node[right] {$x$};
+\draw[->] (0,-19) -- (0,12) node[above] {$y$};
+\end{tikzpicture}
+\end{center}
+\noindent The exact equations $x(t)$ and $y(t)$ for each of these are of no importance to us. These examples were "`borrowed"' by yours truly from Google with the sole purpose of showing the versatility of this representation. The red color in the bottom figure is only there for romantic reasons.
+
+\subsection{A graph says more than a thousand symbols}
+\label{GraphsExamps}
+\noindent Below are the graphs of some common functions which play important roles in physics and we will get acquainted with them in due time. 
+\begin{center}
+\begin{tikzpicture}[xscale=0.3,yscale=1.5]
+	\draw[->]  (-10,0)--(10,0);
+	\draw[->]  (0,-1.1)--(0,1.1);
+	\node [right] at (10.5,0) {$x$};
+	\node [above] at (0,1.1) {$\sin(x)$};
+	\draw[smooth, domain = -10:10, blue, ultra thick] plot function{sin(x)};
+	
+ \foreach \x/\xtext in {-10/-10, -5/-5, 0/ , 5/5, 10/10}
+    \draw[shift={(\x,0)}] (0pt,0.3pt) -- (0pt,-0.3pt) node[below] {$\xtext$};
+
+ \foreach \y/\ytext in {-1/-1, -0.5/-0.5, 0/ , 0.5/0.5, 1/1}
+    \draw[shift={(0,\y)}] (0.3pt,0pt) -- (-0.3pt,-0pt) node[left] {$\ytext$};
+	\node[align=center,font=\bfseries, yshift=1.5em] (title) at (current bounding box.north){Sine};
+	
+\end{tikzpicture}
+\begin{tikzpicture}[xscale=1,yscale=0.02]
+	\draw[->]  (-1,0)--(5,0);
+	\draw[->]  (0,-5)--(0,150);
+	\node [right] at (5.1,0) {$x$};
+	\node [above] at (0,160) {$e^x$};
+	\draw[smooth, domain = -1:5, blue, ultra thick] plot function{exp(x)};
+	
+ \foreach \x/\xtext in {-1/-1, 0/ , 1/1, 3/3, 5/5}
+  \draw[shift={(\x,0)}] (0pt,10pt) -- (0pt,-10pt) node[below] {$\xtext$};
+
+ \foreach \y/\ytext in {0/ ,30/30, 60/60, 90/90, 120/120, 150/150}
+    \draw[shift={(0,\y)}] (0.3pt,0pt) -- (-0.3pt,-0pt) node[left] {$\ytext$};
+	\node[align=center,font=\bfseries, yshift=1.5em] (title) at (current bounding box.north){Exponential};
+\end{tikzpicture}
+\end{center}
+\begin{center}
+\begin{tikzpicture}[xscale=1.5,yscale=0.08]
+
+	\draw[->]  (-2.1,0)--(2.2,0);
+	\draw[->]  (0,-30)--(0,28);
+	\node [right] at (2.3,0) {$x$};
+	\node [above] at (0,31) {$1/x$};
+	\draw[smooth, domain = -2:-0.035, blue, ultra thick,samples=100] plot function{1/x};
+	\draw[smooth, domain = 0.035:2.1, blue, ultra thick,samples=100] plot function{1/x};
+	
+ \foreach \x/\xtext in {-2/-2, -1.5/-1.5, -1/-1, -0.5/-0.5, 0/ , 0.5/0.5, 1/1, 1.5/1.5, 2/2}
+  \draw[shift={(\x,0)}] (0pt,10pt) -- (0pt,-10pt) node[below] {$\xtext$};
+
+ \foreach \y/\ytext in {-30/-30,-20/-20, -10/-10 , 0/ , 10/10, 20/20, 30/30}
+    \draw[shift={(0,\y)}] (1pt,0pt) -- (-1pt,0pt) node[left] {$\ytext$};
+
+\node[align=center,font=\bfseries, yshift=1.5em] (title) at (current bounding box.north){Hyperbola};			
+\end{tikzpicture}
+\begin{tikzpicture}[scale=0.2]
+
+	\draw[->]  (-11,0)--(11,0);
+	\draw[->]  (0,-11)--(0,11);
+	\node [right] at (11,0) {$x$};
+	\node [above] at (0,11) {$id(x)$};
+	\draw[smooth, domain = -10:10.2, blue, ultra thick,samples=500] plot function{x};
+	
+ \foreach \x/\xtext in {-10/-10, -5/-5, 0/ , 5/5, 10/10}
+  \draw[shift={(\x,0)}] (0pt,10pt) -- (0pt,-10pt) node[below] {$\xtext$};
+
+ \foreach \y/\ytext in {-10/-10, -5/-5, 0/ , 5/5, 10/10}
+    \draw[shift={(0,\y)}] (10pt,0pt) -- (-10pt,0pt) node[left] {$\ytext$};
+	
+	\node[align=center,font=\bfseries, yshift=1.5em] (title) at (current bounding box.north){Identity};
+	
+\end{tikzpicture}
+\end{center}
+\begin{center}
+\begin{tikzpicture}[xscale = 0.5,yscale = 0.5]
+
+	\draw[->]  (-6,0)--(6,0);
+	\draw[->]  (0,-5)--(0,5);
+	\draw[smooth, domain = -5.8:-4.9, blue, ultra thick,samples=100] plot function{tan(x)};
+	\draw[smooth, domain = -4.52:-1.76, blue, ultra thick,samples=100] plot function{tan(x)};
+\draw[smooth, domain = -1.38:1.38, blue, ultra thick,samples=100] plot function{tan(x)};
+	\draw[smooth, domain = 1.76:4.52, blue, ultra thick,samples=100] plot function{tan(x)};
+	\draw[smooth, domain = 4.9:5.8, blue, ultra thick,samples=100] plot function{tan(x)};
+	\draw[dashed, thin] (1.57,-5.2) -- (1.57,5.2);
+	\draw[dashed, thin] (-1.57,-5.2) -- (-1.57,5.2);
+	\draw[dashed, thin] (4.71,-5.2) -- (4.71,5.2);
+	\draw[dashed, thin] (-4.71,-5.2) -- (-4.71,5.2);
+	\node [right] at (6.3,0) {$x$};
+	\node [above] at (0,5.3) {$tan(x)$};
+	
+ \foreach \x/\xtext in {-4/-4, -2/-2, 0/ , 2/2, 4/4}
+  \draw[shift={(\x,0)}] (0pt,10pt) -- (0pt,-10pt) node[below] {$\xtext$};
+	\foreach \x/\xtext in {-5/ , -3/, -1/ , 1/, 3/ ,5/ }
+  \draw[shift={(\x,0)}] (0pt,3pt) -- (0pt,-3pt) node[below] {$\xtext$};
+
+ \foreach \y/\ytext in {-4/-4, -2/-2, 0/ , 2/2, 4/4}
+ \draw[shift={(0,\y)}] (10pt,0pt) -- (-10pt,0pt) node[left] {$\ytext$};
+ \foreach \y/\ytext in {-3/ , -1/ , 1/1, 3/ }
+ \draw[shift={(0,\y)}] (3pt,0pt) -- (-3pt,0pt) node[left] {$\ytext$};
+	
+\node[align=center,font=\bfseries, yshift=1.5em] (title) at (current bounding box.north){Tangent};
+
+\end{tikzpicture}
+\begin{tikzpicture}[xscale=0.3, yscale = 0.04]
+
+	\draw[->]  (-11,0)--(11,0);
+	\draw[->]  (0,-10)--(0,110);
+	\node [right] at (11,0) {$x$};
+	\node [above] at (0,110) {$x^2$};
+	\draw[smooth, domain = -10:10, blue, ultra thick,samples=500] plot function{x*x};
+	
+ \foreach \x/\xtext in {-10/-10, -5/-5, 0/ , 5/5, 10/10}
+  \draw[shift={(\x,0)}] (0pt,10pt) -- (0pt,-10pt) node[below] {$\xtext$};
+
+ \foreach \y/\ytext in {0/ , 50/50, 100/100}
+    \draw[shift={(0,\y)}] (10pt,0pt) -- (-10pt,0pt) node[left] {$\ytext$};
+	
+	\node[align=center,font=\bfseries, yshift=1.5em] (title) 
+    at (current bounding box.north)
+    {Parabola};
+	
+\end{tikzpicture}
+\end{center}
+
+\section{Solving equations}
+\label{EqSolveBasics}
+\subsection{Basic operations on equations}
+\noindent An equation is an expression of the form
+\begin{equation}
+\label{IntroEquations}
+f(x) = g(x)
+\end{equation}
+with both $f$ and $g$ functions. This equation can be interpreted in 2 different ways:
+\begin{enumerate}[i]
+\item A statement of truth: "`$f$ and $g$ are equal"'. Equation (\ref{IntroEquations}) tells us in this interpretation that the functions $f$ and $g$ give the same output for all values of $x$.
+\item A condition that needs to be met. Equation (\ref{IntroEquations}) tells us in this interpretation that we are looking for all values of $x$ for which $f$ and $g$ give the same result. As we will see below, depending on the functions $f$ and $g$ there may be a single value of $x$ where this is the case, there may be multiple values (even infinitely many) or none at all.
+\end{enumerate}
+\noindent The context should always make it clear which of the 2 interpretations is being used. In the rest of this chapter we will focus on the second interpretation.\\
+
+\noindent "`Solving"' equation (\ref{IntroEquations}) means finding those values of $x$ for which the equality holds. We start with an equation that has a very obvious solution:
+\begin{equation}
+3x +2 = 17
+\label{ValEquation}
+\end{equation}
+By staring at this equation for a moment you probably realize that the value that $x$ has to take for it to hold true is $x=5$. Indeed, $3 \times 5 + 2 = 17$. But staring and hoping is only one of a wide variety of techniques for solving equations.\\
+
+\noindent The most basic of techniques is isolating the variable $x$ on one side of the equality sign. We start by subtracting $2$ from both the LHS and the RHS of (\ref{ValEquation}):
+$$
+ 3x + 2 - 2   =  17 - 2
+$$
+which leaves us with
+$$
+3x = 15
+$$
+Before continuing with solving equation (\ref{ValEquation}) I want to dwell just a bit longer on this subtraction. Why are we allowed to do it?\\
+
+\subsubsection{Intermezzo: Manipulating equations}
+\noindent Well, think of it this way. It is of course true that $11=11$. Adding $8$ to both sides will not make it false. It is indeed also true that $11+8 = 11+8$ which often goes through life as $19=19$. Adding the same number to both sides of an equation does not alter its validity. This is also true when subtracting, multiplying with and dividing by the same number on both sides of the equation (except for dividing both sides by $0$ which we are not allowed to do anyway).\\ 
+
+\noindent  In mathematician's lingo this is expressed in the following way: $\forall a, b$ and $c \in \mathbb{R}$:
+\begin{eqnarray}
+\label{LogStatement} a = b & \Leftrightarrow & a + c = b + c \\
+a = b & \Leftrightarrow & a - c = b - c \\
+a = b & \Leftrightarrow & a \times c = b \times c \\
+\label{divExamp} a = b & \Leftrightarrow & \frac{a}{c} = \frac{b}{c}
+\end{eqnarray}
+\noindent The symbol $\forall$ is read as "for each" and the colon as "such that". The arrow $\Leftrightarrow$ is read as "if and only if" or also as "`is equivalent with"' and means that if the statement to its right is true then the statement to its left also has to be true and vice versa\footnote{The arrow $\Leftrightarrow$ is actually a combination of $\Rightarrow$ and $\Leftarrow$. We consider 2 logical statements $p$ and $q$ that may or may not be true, for instance "`Brussels is a city in Argentina"'. Note that for a statement to be logical it need not be true though its truth needs to be objectively decidable. The statement "`sour is better than bitter"' is not a logical statement as there is no objective measure to determine its truth. The statement $p \Rightarrow q$ is read as "$p$ implies $q$" and means that if $p$ is true then $q$ also has to be true, but not necessarily the other way around. While $p \Leftarrow q$ means that if $q$ is true, then $p$ has to be true, though not necessarily the other way around.}. Statement (\ref{LogStatement}) in words is "if the numbers $a$ and $b$ are equal, then we can add to both any number $c$ and they still remain equal, no matter the values of $a$, $b$ or $c$, and vice versa". As mentioned above, for (\ref{divExamp}) we also need the additional condition that $c \neq 0$. All these statement above basically say that applying any of the 4 basic arithmetic operations to both sides of an equation does not alter its validity (i.e. if the statement was true before, it remains true and if it was false it remains false). This means that if $f(x) = g(x)$ for some value of $x$, then $f(x) - c = g(x) - c$. This is what we did as a first step towards solving equation (\ref{ValEquation}).\\
+ 
+\noindent You may think "I am allowed to do anything with equations as long as I do the same thing on both sides". This seems appealing, but it is wrong. Take for instance the equality $(4)^2 = (-4)^2$ which is true as both sides are equal to $16$. But $4 = \sqrt{(4)^2} \neq \sqrt{(-4)^2} = -4$. Taking the square root of both sides of an equation can indeed turn a true statement into a false one. Though we are not allowed to take the square root of both sides of an equation, we are allowed to take the square of the equation without altering its validity.\\
+
+\noindent The combination of these two last properties is mathematically summarized as follows:
+\begin{eqnarray*}
+\forall a,b \in \mathbb{R}:a = b & \Rightarrow & a^2 = b^2
+\end{eqnarray*}
+Notice that the implication is only valid in one direction here. 
+
+\subsubsection{Back to solving equations}
+
+Coming back to solving that equation, we continue by dividing both sides by $3$:
+$$
+\frac{3x}{3} = \frac{15}{3}
+$$
+so that we finally find
+$$
+x = 5
+$$
+By isolating the variable on one side of the equality we solved the equation, finding the same (and only) solution as by the old "`stare and hope"' method above.\\
+
+\subsection{Graphical interpretation of solutions}
+
+\noindent What does it mean when we say "$x_1$ is a solution of the equation $f(x) = 0$"? It means that if we plug in the value $x_1$ into the function $f$ the output will be $0$. In other words, $\left( x_1, 0 \right)$ is on the graph of the function $f$. Or still, the graph of the function $f$ coincides with the horizontal axis (usually called the x-axis) at $x = x_1$. Below is the graph of $f(x) = x^3 - 4 x^2 + 3$
+\begin{center}
+\begin{tikzpicture}[xscale=1, yscale = 0.2]
+
+	\draw[->]  (-2,0)--(5,0);
+	\draw[->]  (0,-10)--(0,30);
+	\node [right] at (5.5,0) {$x$};
+	\node [above] at (0,30) {$f(x)$};
+	\draw[smooth, domain = -1.5:5, blue, ultra thick,samples=300] plot function{(x*x*x) - (4*x*x) + 3};
+	
+ \foreach \x/\xtext in {-1/-1, 1/1, 3/3 , 5/5}
+  \draw[shift={(\x,0)}] (0pt,10pt) -- (0pt,-10pt) node[below] {$\xtext$};
+
+ \foreach \y/\ytext in {-5/-5, 5/5, 15/15, 25/25}
+    \draw[shift={(0,\y)}] (5pt,0pt) -- (-5pt,0pt) node[left] {$\ytext$};
+		
+\end{tikzpicture}
+\end{center}
+The solutions of the equation
+$$
+f(x) = x^3 - 4x^2 + 3 = 0
+$$
+are the values of $x$ at which the graph coincides with the $x$-axis. Just by looking at the graph, it seems one of the solutions is at $x=1$. But looking is not enough. The solution could be very close to $x=1$, maybe at $x=1,0001$, so that we cannot determine its exact value visually. To confirm that $x=1$ is indeed a solution we plug it into the function $f$ and find indeed that $f(1)=0$. The  two other solutions of the equation seem to be a bit above $x=-1$ and just under $x=4$. The exact values of the solutions can be found in this case by a method we will discuss further in the text. But it will often be impossible to determine the exact value of the solutions. There are nevertheless techniques to find approximate values for the solutions which is sufficient for many physical applications. More on this later.
+
+\section{Polynomial functions}
+
+\noindent One type of function that pops up everywhere in science, and with good though non-trivial reasons, is called a polynomial function. Examples are:
+\begin{eqnarray*}
+ f(x) & = & x^4 +5x \\
+f(x) & = & 3x^{25} + \frac{4}{7}x^{13} - 9x^8 \\
+f(x) & = & -4 \\
+f(x) & = & x^2 - 15
+\end{eqnarray*}
+\noindent What all of these have in common is their basic structure:
+\begin{equation}
+\label{Def_Polynom}
+f(x) = a_n x^n + a_{n-1} x^{n-1} + a_{n-2} x^{n-2} + \cdots + a_2 x^2 + a_1 x^1 + a_0 = \sum\limits_{i=0}^{n} a_i \; x^{i}
+\end{equation}
+All of the $a_i$'s are real numbers and $n$ is a natural number. Polynomial functions are always of the form "`a number $a_n$ times the $n^{th}$ power of $x$ plus a second constant $a_{n-1}$ times the $(n-1)^{th}$ power of $x$ plus... until an $n^{th}$ constant $a_1$ times $x^1$ (which is simply $x$ itself) plus a final constant $a_0$"'. For instance, if $n=3$, a possible polynomial function is 
+$$
+f(x) = 2 x^3 + 4x -3
+$$ 
+\noindent In this case
+\begin{eqnarray*}
+a_3 = 2 \\
+a_2 = 0 \\
+a_1 = 4 \\
+a_0 = -3
+\end{eqnarray*}
+The highest exponent of $x$ appearing in the function is called the \textbf{degree} of the polynomial. The degrees of the 4 first polynomials above are: $4, 25, 0$ and $2$.\\
+
+\noindent We will encounter in physics many equations of the form
+\begin{equation}
+\sum\limits_{i=0}^{n} a_i \: x^{i} = 0
+\end{equation}
+Such statements are known as polynomial equations. Solving these is among the basic skills necessary to do physics.
+
+\subsection{$1^{st}$ degree polynomials}
+
+\noindent A $1^{st}$ degree polynomial function has the generic form
+\begin{equation}
+f(x) = a_1 x + a_0
+%\label{FirstOrdExampFunc}
+\end{equation}
+These are also known as linear functions\footnote{In most texts this will be written as $f(x) = a x + b$ with $a$ and $b$ real numbers.}. The graphs of such functions are straight lines. The meaning of $a_1$ and $a_0$ can be seen on the graphs below. 
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}
+[
+		minor tick num=1,
+		axis x line=middle,
+		line width = 1.3,
+		align =center,
+		title={\textbf{Effect of changing $\bf{a_1}$}\\ $\bf{f(x)= a_1 x +2}$},
+		axis y line=middle,
+		xmax=10, xmin=-10,
+		ymax=12, ymin=-8.5,
+		xlabel=$x$,ylabel=$y$,
+		legend style={at={(0,1)},anchor=north west}
+		%legend style={
+			%	cells={anchor=east},
+				%legend pos=outer north west
+			%}
+	]
+\foreach \num / \col in {-10/red, -2/cyan, -1/orange, 0/green, 1/blue, 2/olive, 10/gray}  {
+				\edef\temp{\noexpand\addplot[line width=1.7pt, samples=500, domain= -8:12, color= \col]
+					{\num*x +2};}
+        \temp
+				 \addlegendentryexpanded{$a_1 = \num$};
+}
+\end{axis}
+\end{tikzpicture}
+\begin{tikzpicture}
+\begin{axis}
+[
+		minor tick num=1,
+		axis x line=middle,
+		line width = 1.3,
+		align =center,
+		title={\textbf{Effect of changing $\bf{a_0}$}\\ $\bf{f(x)= \frac{1}{2} x +a_0}$},
+		axis y line=middle,
+		xmax=8, xmin=-8,
+		ymax=7.5, ymin=-7.5,
+		xlabel=$x$,ylabel=$y$,
+		legend style={at={(1,1)},anchor=north east}
+	]
+\foreach \num / \col in {-5/red, -2/cyan, 0/blue, 2/green, 5/yellow}  {
+				\edef\temp{\noexpand\addplot[line width=1.7pt, samples=500, domain= -7:7, color= \col]
+					{0.5*x +\num};}
+        \temp
+				 \addlegendentryexpanded{$a_0 = \num$};
+}
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\noindent The coefficient $a_1$ is a measure of the slope of the function and $a_0$ is the value at which the function crosses the $y$-axis.
+\begin{itemize}
+\item $\mathbf{a_1 > 0: }$ graph has \textbf{upward} slope (when read from left to right). As $a_1$ increases the upward slope becomes steeper.
+\item $\mathbf{a_1 = 0: }$ horizontal graph (the green line on the left graph above, which is actually a $0^{th}$ order polynomial).
+\item $\mathbf{a_1 < 0: }$ graph has \textbf{downward} slope (when read from left to right).
+\end{itemize}
+ 
+\subsubsection{Solving $1^{st}$ degree polynomial equations}
+
+\noindent Remember that solving the linear equation
+\begin{equation}
+a_1 x + a_0 = 0
+\label{FirstOrdExamp}
+\end{equation}
+means finding the value(s) of $x$ for which the equality holds. We explicitly assume that $a_1 \neq 0$ as the equation would not be a $1^{st}$ degree polynomial otherwise\footnote{If $a_1=0$ then the polynomial function is $f(x)= a_0$. This function maps any $x$ onto the number $a_0$. The graph is a horizontal line at $y=a_0$. The solution(s) of the equation $f(x) = a_0 = 0$ depend on the value of $a_0$. If $a_0 \neq 0$ then there are no solutions. And if $a_0=0$ than all values of $x$ are solutions.}. To solve equation (\ref{FirstOrdExamp}) the steps are
+\begin{eqnarray*}
+ & a_1 x + a_0  & = \;0 \\
+ \Leftrightarrow & a_1 x &  = \;  - a_0 \\
+  \Leftrightarrow & x  & =  \;- \frac{a_0}{a_1}
+\end{eqnarray*}
+\noindent In the first step we subtract $a_0$ from both sides and in the second step we divide both sides of the equation by $a_1$ (which is allowed as we know that $a_1 \neq 0$). The solution is thus $x = -\frac{a_0}{a_1}$.
+\begin{center}
+
+\begin{tabular}{ |ccc| }
+  \hline
+	& & \\
+  $\bf{a_1 x + a_0 = 0}$ & $\bf{\Leftrightarrow}$ & $\bf{x =  - \frac{a_0}{a_1}}$ \\
+  & & \\
+	\hline
+	\end{tabular}
+\end{center}
+\noindent Every $1^{st}$ degree polynomial equation has exactly $1$ solution given by $x = -\frac{a_0}{a_1}$. Equation (\ref{ValEquation}) is a $1^{st}$ degree polynomial equation: $3x + 2 = 17$. This is the same equation as $3x -15 = 0$. Its solution is therefore $x= - \frac{-15}{3} = 5$ which is indeed the solution we found before. Another example of a linear equation is $f(x)=-3x + 4$. The coefficients were $a_1 = -3$ and $a_0 = 4$ so that its solution is $-\frac{4}{-3} = \frac{4}{3} = 1.333\cdots$. Both solutions are highlighted in red circles below.
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}
+[
+		minor tick num=1,
+		axis x line=middle,
+		line width = 1.3,
+		title={$\bf{f(x)=3x -15}$},
+		axis y line=middle,
+		xmax=6, xmin=-1.1,
+		ymax=2, ymin=-17,
+		xlabel=$x$,ylabel=$y$,
+	]
+	\draw [red, ultra thick] (5,0) circle [radius=6pt];
+%\draw [red, ultra thick] (4,0) circle [radius=6pt];
+	\addplot[line width=1.7pt, samples=500, domain= -1.1:6, color= blue]
+					{3*x -15};
+\end{axis}
+\end{tikzpicture}
+\begin{tikzpicture}
+\begin{axis}
+[
+		minor tick num=1,
+		axis x line=middle,
+		line width = 1.3,
+		title={$\bf{f(x)=-3x +4}$},
+		axis y line=middle,
+		xmax=3, xmin=-3,
+		ymax=13, ymin=-2.5,
+		xlabel=$x$,ylabel=$y$,
+	]
+	\draw [red, ultra thick] (1.333,0) circle [radius=6pt];
+%\draw [red, ultra thick] (4,0) circle [radius=6pt];
+	\addplot[line width=1.7pt, samples=500, domain= -3:3, color= blue]
+					{-3*x +4};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+
+\subsection{$2^{nd}$ degree polynomials}
+
+\noindent A $2^{nd}$ degree polynomial function is of the form:
+\begin{equation}
+\label{QuadrEq}
+f(x) = a_2 x^2 + a_1 x + a_0
+\end{equation}
+The corresponding graph is known as a parabola. Below are a couple of graphs to visualize the effect of changing each of the three coefficients $a_2, a_1$ and $a_0$ separately.
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}
+[
+		minor tick num=3,
+		axis x line=middle,
+		line width = 1.3,
+		align =center,
+		title={\textbf{Effect of changing $\bf{a_2}$}\\ $\bf{f(x)=a_2 x^2 - 4x +1}$},
+		%title={$\bf{f(x)=a_2 x^2 - 4x +1}$},
+		axis y line=middle,
+		xmax=8.5, xmin=-8,
+		ymax=8.5, ymin=-8,
+		xlabel=$x$,ylabel=$y$,
+		legend style={
+				cells={anchor=east},
+				legend pos=outer north east
+			}
+	]
+\foreach \num / \col in {-5/red, -1/cyan, -0.6/orange, -0.4/green, 0/blue, 0.4/olive, 0.6/yellow, 1/gray, 5/brown}  {
+				\edef\temp{\noexpand\addplot[line width=1.7pt, samples=500, domain= -8:8.5, color= \col]
+					{\num*x^2 - 4*x +1};}
+        \temp
+				 \addlegendentryexpanded{$a_2 = \num$};
+}
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\noindent Note the following points:
+\begin{itemize}
+\item As the absolute value of $a_2$ increases, the parabola becomes narrower.
+\item For $a_2 >0$ the parabola has a minimum whereas for $a_2 < 0$ it has a maximum.
+\item All parabolas cross the $y$-axis in $y=1$, the value of $a_0$.
+\item The dark blue line corresponds to $a_2 = 0$ which is the function $f(x) = -4x + 1$. This is a linear function depicted as a (decreasing) straight line.The closer $a_2$ is to $0$, the longer the corresponding parabola remains close to it, before bending away towards its extremum.
+\end{itemize}
+\noindent Turning now to the effect of $a_1$:
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}
+[
+		minor tick num=3,
+		axis x line=middle,
+		line width = 1.3,
+		align =center,
+		title={\textbf{Effect of changing $\bf{a_1}$}\\ $\bf{f(x)=3 x^2 - a_1x -2}$},
+		axis y line=middle,
+		xmax=3.5, xmin=-3,
+		ymax=8.5, ymin=-5,
+		xlabel=$x$,ylabel=$y$,
+		legend style={
+				cells={anchor=east},
+				legend pos=outer north east
+			}
+	]
+\foreach \num / \col in {-5/red, -3/cyan,  -1/blue, 0/olive, 1/yellow, 3/brown,  5/darkgray}  {
+				\edef\temp{\noexpand\addplot[line width=1.7pt, samples=500, domain= -3:3, color= \col]
+					{3*x^2 - \num*x -2};}
+        \temp
+				 \addlegendentryexpanded{$a_1 = \num$};
+}
+\addplot[dashed, black, ultra thick] {-3*x^2 -2};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\noindent The effect of changing $a_1$ can be summarized as follows:
+\begin{itemize}
+\item The value of $a_1$ does not have an influence on how narrow the parabola is.
+\item As before all parabolas cross the $y$-axis at the value of $a_0$ which is $-2$ in this case.
+\item The extremum of the parabola moves itself along a parabola (dashed line) as $a_1$ changes.
+\end{itemize}
+\noindent Finally, changing $a_0$ gives:
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}
+[
+		minor tick num=3,
+		axis x line=middle,
+		line width = 1.3,
+		align =center,
+		title={\textbf{Effect of changing $\bf{a_0}$}\\ $\bf{f(x)=-x^2 + 2x +a_0}$},
+		axis y line=middle,
+		xmax=5, xmin=-4,
+		ymax=7, ymin=-8,
+		xlabel=$x$,ylabel=$y$,
+		legend style={
+				cells={anchor=east},
+				legend pos=outer north east
+			}
+	]
+\foreach \num / \col in {-5/red, -3/cyan, -1/orange, -0/green, 1/blue, 3/olive, 5/pink}  {
+				\edef\temp{\noexpand\addplot[line width=1.7pt, samples=500, domain= -4:5, color= \col]
+					{-x^2 + 2*x +\num};}
+        \temp
+				 \addlegendentryexpanded{$a_0 = \num$};
+}
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\noindent Once again the value of $a_0$ is where the parabola crosses the $y$-axis. Changing $a_0$ shifts the parabola vertically without changing it otherwise.
+
+\subsubsection{Solving $2^{nd}$ degree polynomial equations}
+
+\noindent A $2^{nd}$ degree polynomial equation (also known as a quadratic equation) is of the form\footnote{This is usually written as $f(x) = ax^2 + bx + c = 0$ with $a$, $b$ and $c$ real numbers.}:
+\begin{equation}
+\label{QuadrEq1}
+a_2 x^2 + a_1 x + a_0 = 0
+\end{equation}
+\noindent Solutions are the values of $x$ where the graph of the parabola coincides with the $x$-axis. Looking at figure above we see there can be three different cases:
+\begin{enumerate}
+\item The red and light blue parabolas do not touch the $x$-axis: there are \textbf{no solutions}.
+\item The orange parabola touches the $x$-axis but does not cross it. There is \textbf{exactly one solution}, namely the value of $x$ at that point.
+\item The parabola crosses the $x$-axis, in which case there are \textbf{two distinct solutions}.
+\end{enumerate}
+\noindent In this section we will discuss the solutions in each of the cases. The derivation of these results are given in (\ref{DeriveDiscr}) but can be skipped without running into difficulties in the rest of the text.\\
+
+\noindent In order to calculate the value of the solutions we define $\Delta$\, the \textbf{discriminant}\footnote{The notation "`:="' means "`is defined as"'.}
+$$
+\Delta := a_1^2 - 4 a_2 a_0
+$$ 
+The three cases are then the following:
+\begin{enumerate}
+\item $\mathbf{\Delta > 0:}$\\
+\noindent The equation has $2$ distinct solutions:
+$$
+x_{\pm} = \frac{- a_1 \pm \sqrt{\Delta}}{2 a_2}
+$$
+\noindent For example in equation $2x^2 -10 x +8 = 0$ the values of the $a_i$'s are
+\begin{eqnarray*}
+a_2 = 2 & a_1 = -10 & a_0 = 8
+\end{eqnarray*}
+The discriminant is equal to
+$$
+\Delta = a_1^2 - 4 a_2 a_0 = (-10)^2 - 4\times 2 \times 8 = 100 - 64 = 36
+$$
+The $2$ solutions are
+\begin{eqnarray*}
+x_+ = \frac{-a_1 + \sqrt{\Delta}}{2 a_2} = \frac{-(-10) + \sqrt{36}}{2 \times 2} =  \frac{10 + 6}{4} = 4 \\
+x_- = \frac{-a_1 - \sqrt{\Delta}}{2 a_2} = \frac{-(-10) - \sqrt{36}}{2 \times 2} =  = \frac{10 - 6}{4} = 1 
+\end{eqnarray*}
+\noindent In the graph below we indeed see that the function crosses the $x$-axis twice: at $x=1$ and at $x=4$.
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}
+[
+		minor tick num=1,
+		axis x line=middle,
+		line width = 1.3,
+		title={$\bf{f(x)=2x^2 -10x +8}$},
+		axis y line=middle,
+		xmax=6, xmin=-1.5,
+		ymax=12, ymin=-5,
+		xlabel=$x$,ylabel=$y$,
+	]
+	\draw [red, ultra thick] (1,0) circle [radius=6pt];
+\draw [red, ultra thick] (4,0) circle [radius=6pt];
+	\addplot[line width=1.7pt, samples=500, domain= -1.5:6, color= blue]
+					{2*x^2 -10*x +8};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\item $\mathbf{\Delta = 0:}$\\
+\noindent The equation has $1$ unique solution:
+$$
+x =\frac{- a_1 \pm \sqrt{\Delta}}{2 a_2}=  \frac{-a_1}{2a_2}
+$$
+
+In $f(x)=-\frac{1}{2}x^2 -3 x - \frac{9}{2} = 0$ the $a_i$'s are
+\begin{eqnarray*}
+a_2 = -\frac{1}{2} & a_1 = -3 & a_0 = -\frac{9}{2}
+\end{eqnarray*}
+The discriminant is equal to
+$$
+\Delta = a_1^2 - 4 a_2 a_0 = (-3)^2 - 4\times (-\frac{1}{2}) \times (-\frac{9}{2}) = 9 - 9 = 0
+$$
+The solution is
+\begin{equation*}
+x = \frac{-a_1 }{2 a_2} = \frac{-(-3)}{2 \times (-\frac{1}{2})} = -3 
+\end{equation*}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}
+[
+		minor tick num=1,
+		axis x line=middle,
+		line width = 1.3,
+		title={$\bf{f(x)=-\frac{1}{2}x^2 -3x -\frac{9}{2}}$},
+		axis y line=middle,
+		xmax=1.1, xmin=-8,
+		ymax=1.1, ymin=-8,
+		xlabel=$x$,ylabel=$y$,
+	]
+	\draw [red, ultra thick] (-3,0) circle [radius=6pt];
+%\draw [red, ultra thick] (4,0) circle [radius=6pt];
+	\addplot[line width=1.7pt, samples=500, domain= -8:1.1, color= blue]
+					{-0.5*x^2 -3*x - 4.5};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\item $\mathbf{\Delta < 0:}$\\
+\noindent No (real) solutions exist. As an example we consider $f(x)= -x^2 + x-1=0$. The coefficients are
+\begin{eqnarray*}
+a_2 = -1 & a_1 = 1 & a_0 = -1
+\end{eqnarray*}
+The discriminant is equal to
+$$
+\Delta = a_1^2 - 4 a_2 a_0 = 1^2 - 4\times (-1) \times (-1) = -3 < 0
+$$
+If we were to try to apply the formula $x_{\pm} = \frac{-a_1 \pm \sqrt{\Delta}}{2a_2}$ we would be taking the square root of a negative number, which does not exist. In the corresponding graph we indeed see that the parabola does not touch the $x$-axis anywhere.
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}
+[
+		minor tick num=1,
+		axis x line=middle,
+		line width = 1.3,
+		title={$\bf{f(x)=-x^2 +x -3}$},
+		axis y line=middle,
+		xmax=4, xmin=-4,
+		ymax=1.1, ymin=-15,
+		xlabel=$x$,ylabel=$y$,
+	]
+	\addplot[line width=1.7pt, samples=500, domain= -4:15, color= blue]
+					{-x^2 +x - 1};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\end{enumerate}
+
+\subsection{Higher-order polynomial equations}
+
+\noindent Equations of the form
+$$
+\sum\limits_{i=1}^{n} a_i x^i = 0
+$$
+with $n>2$ are not as straightforward to solve. For $n=3$ and $n=4$ there exist techniques to solve such equations, but they are beyond the scope of this text. From $n=5$ onwards there exists no general technique to solve the polynomial equation and we are left with approximation techniques for estimating the solutions\footnote{When I say there are no techniques I do not mean that we have not found a technique yet but we keep on looking for one. It is actually much cooler. Mathematicians have been able to prove that no technique could ever be developed or found to do this because there simply is none. Told you, it's cool!}. These will be discussed when we come across them in physical applications. Just to get the flavor, here is what a randomly chosen $7^{th}$ degree polynomial looks like.
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}
+[
+		minor tick num=1,
+		axis x line=middle,
+		line width = 1.3,
+		title={$\bf{f(x)=2x^7 -5x^4 -\frac{3}{4}x -3}$},
+		axis y line=middle,
+		xmax=2, xmin=-1.5,
+		ymax=10, ymin=-10,
+		xlabel=$x$,ylabel=$y$,
+	]
+	\addplot[line width=1.7pt, samples=500, domain= -1.5:2, color= blue]
+					{2*x^7 - 5*x^4 - 0.75*x - 3};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\section{Functions in physics}
+
+\noindent Functions are among the most frequently used mathematical concepts in the sciences. They are the physicist's way of representing dependencies between physical quantities.\\
+
+\begin{itemize}
+
+\item \textbf{Scattering: }\\
+\noindent Imagine we have an object of unknown shape which we wish to determine. We decide to shoot some tiny balls (or light or electrons or yodeling lemmings of known shape) at the object at different incoming angles and measure for each the corresponding outgoing angle.
+\begin{center}
+\begin{tikzpicture} [scale = 0.5]
+\coordinate (c) at (6,1);
+\draw[dotted, black, rounded corners=1mm, very thick] (c) \irregularcircle{2.6cm}{1mm};
+	\draw[->] [line width=2pt, solid] {(-5.5,4) -- node[sloped, anchor=center, above]{in} (2,2.5)};
+	\draw[->] [line width=2pt, dashed] {(-5.5,0.5) -- node[sloped, anchor=center, above]{in}(2,1)};
+	\draw[->] [line width=2pt, dotted] {(-5.5,-3) -- node[sloped, anchor=center, above]{in}(2,-0.5)};
+	
+	\draw[->] [line width=2pt, dotted] {(9,2.5) -- node[sloped, anchor=center, above]{out} (15,8)};
+	\draw[->] [line width=2pt, dashed] {(11,1) -- node[sloped, anchor=center, above]{out}(17,3)};
+	\draw[->] [line width=2pt, solid] {(10.5,-1) -- node[sloped, anchor=center, above]{out}(17.5,-3)};
+	
+\end{tikzpicture}	
+\end{center}
+\noindent The outgoing angle can is a function of the incoming angle: $\alpha_{out} = f(\alpha_{in})$.
+
+\item \textbf{Parabolic motion: }\\
+\noindent Take an apple in your hand and throw it out in front of you. The motion of the apple once it leaves your hand looks something like this:\\
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}
+[
+		minor tick num=1,
+		axis x line=middle,
+		line width = 1.3,
+		%title={$\bf{f(x)=2x^7 -5x^4 -\frac{3}{4}x -3}$},
+		axis y line=middle,
+		xmax=5.5, xmin=-0.5,
+		ymax=2.3, ymin=-0.5,
+		xlabel=$x$,ylabel=$y$,
+	]
+	\addplot[line width=1.7pt, samples=500, domain= 0:5, color= blue]
+					{-0.2*(x+1)*(x-5)};
+	\draw [red, fill=white,] (1.666,1.778) circle [radius = 3pt] node [above=2.5mm , black]{$t = 0.33 s$};
+	\draw [red, fill=white,] (2.5,1.75) circle [radius = 3pt] node [right=3mm,black]{$t = 0.5 s$};
+	\draw [red, fill=white,] (3.75,1.1875) circle [radius = 3pt]node [right=3mm,black]{$t = 0.75 s$};
+	
+\end{axis}
+\end{tikzpicture}
+\end{center}
+What is shown is actually a parametric representation of the trajectory of the apple. Both the horizontal ($x$) and the vertical ($y$) position of the apple are functions of the parameter $t$ which represents the time since the apple left your hand: $\left( x(t), y(t) \right)$. We choose to call that moment time $t=0$. The apple is then where your hand left it:$\left( x(0), y(0) \right) = (0,1)$. It moves upwards until its highest point where it starts making its way to the ground, all the while moving further away from you. The position of the apple after $1/3 s$, $1/2 s$ and $3/4 s$ is marked on the graph.
+\item \textbf{Distance as a function of time: }
+\begin{equation}
+\label{Flight_equation}
+d(t) = 5\:500\:000 - 280 t
+\end{equation}
+\noindent I just made up this equation on the spot. It could for instance describe the distance you still have to travel when flying from London to New York. We start our chronometer at the moment of take-off, which we call time $t=0$. At that instant of time you are in London which is approximately $5\:500$ km from New York. Plugging $t=0$ into equation (\ref{Flight_equation}) we find that the distance to our destination at that time equals $d(0) = 5\:500\:000 - 280 \times 0 = 5\:500\:000 $. This is the number of meters that we still have to travel at time $t=0$. After 3 hours of flight the remaining distance to New York is $d(10\:800) = 5\:500\:000 - 280 \times 10\:800 = 2\:476\:000 $ meters, or $2 \:476$ km to New York. Notice that we express the time in second and that an hour corresponds to $3\:600$ seconds so that 3 hours correspond to $10\:800$ seconds.
+\item \textbf{Pressure as a function of depth: }
+\begin{equation}
+\label{Press_Examp}
+p(d) = 1 + \frac{d}{10}
+\end{equation}
+\noindent In our everyday life we experience the "`normal"' pressure due to the atmosphere (aptly called "`atmospheric pressure"'). In a swimming pool the pressure increases as we dive deeper under water. The pressure $p$ we experience under water is thus a function of the depth $d$ at which we find ourselves. Equation (\ref{Press_Examp}) gives the amount of pressure we experience at a depth $d$ under water. At the surface the depth $d=0$ and we experience (one) atmospheric pressure. Diving to a depth of 5 meters we experience a pressure equal to $p(5) = 1+ \frac{5}{10} = 1 + 0,5 = 1,5 $ atmospheric pressure. It has increased by 50\%. At 30 meters depth we experience $p(30) = 1 + \frac{30}{10} = 1 + 3 = 4$ times the atmospheric pressure.
+\item \textbf{Radiated power as a function of temperature: }
+\begin{equation}
+ P(T) = T^4
+\label{StefBoltz}
+\end{equation}
+\noindent Objects radiate more when they are hotter. The hotter a piece of coal is, the more heat it radiates per second. The amount of energy radiated per second is known as the power $P$. This power is a function of temperature\footnote{The temperature $T$ in equation (\ref{StefBoltz}) needs to be expressed in a unit known as Kelvin instead of degrees centigrade. We will discuss the Kelvin temperature scale in chapter \ref{}. For now just remember that the equation only gives correct results if $T$ is expressed in Kelvin.}: $P(T)$. The $4^{th}$ power in the function says that if the temperature doubles, the power becomes $16$ times larger (because $2^4 = 16$). Or equally that if the temperature is tripled, the power increases $81$ times (because $3^4 = 81$).
+\end{itemize}
+\noindent One of the objectives of science is to find such relations between physical quantities. Writing down a function that relates several quantities amounts to making a prediction about reality. Equation (\ref{Press_Examp}) predicts that at a depth of 10 meters under the water surface the pressure will be twice its value at the surface. This can be tested. And if this turns out to be wrong (it does not) than a new relation between pressure and depth needs to be looked for.
+
+\section{Proof that $\sqrt{2}$ is irrational}
+\label{proofsqrt2}
+\noindent We want to prove that $\sqrt{2}$ cannot be written as a fraction of integers. One possible way of doing this is to assume it can, and show that this assumption leads to an impossible conclusion (which mathematicians call a contradiction).\\
+
+\noindent Before proving it, we prove a simple property of even numbers which we will need below: $ x^2 \text{even} \Rightarrow x \text{even} $, if a number $x^2$ is even, than so is $x$ itself. How do we know this? Well, if $x$ was odd, than it could be written as $x= 2n + 1$ for $n \in \mathbb{N}$ (any even number is twice some natural number and any odd number is an even number plus $1$). Its square can be calculated with the formula $\left( a+b  \right)^2 = a^2 + 2ab+b^2$. So
+$$
+x^2 = \left( 2n + 1 \right)^2 = 4n^2 + 4n + 1
+$$
+Both $4n^2$ and $4n$ are even (as they are both $2$ times some natural number) which because of the $+1$ at the end shows that $x^2$ is odd. This proves $x^2 \text{even} \Rightarrow x \text{even}$, because we just saw that if $x$ had been odd, so would have been its square.\\
+
+\noindent We now start the actual proof of the irrationality of $\sqrt{2}$ by assuming
+$$
+\sqrt{2} = \frac{a}{b}
+$$
+with $a$ and $b$ integers. Remember than any rational number can be represented by infinitely many fractions. For example
+$$
+\frac{66}{12} = \frac{22}{4} = \frac{55}{10} = \frac{11}{2} = \cdots
+$$
+\noindent are all equivalent and $\frac{11}{2}$ is the most simplified this fraction can be. We may as well choose $a$ and $b$ so that $\frac{a}{b}$ is as simplified as possible. Otherwise, we could simplify it until it cannot be simplified any further and call the numerator and denominator of that fraction $a$ and $b$, respectively. So we now know that $\sqrt{2} = \frac{a}{b}$, that $a$ and $b$ are integers and that the fraction cannot be simplified further. Let us square that equation, which gives
+$$
+2 = \frac{a^2}{b^2}
+$$
+\noindent Multiplying both sides by $b^2$ we find
+$$
+2 b^2 = a^2
+$$
+\noindent Because $a^2$ is equal to twice some number, it has to be even and by the property we proved above it follows that $a$ itself is even. It can therefore be written as $a=2c$ with $c \in \mathbb{N}$. Pluggin it into the previous equation gives
+$$
+2 b^2 = \left( 2 c \right)^2 = 4 c^2
+$$
+\noindent Dividing by $2$ leaves us with
+$$
+b^2 = 2c^2
+$$
+\noindent This now proves that $b$ is also even, which at its turn shows that $b$ itself is even. We conclude that both $a$ and $b$ are even. But this is in contradiction with the assumption that $\frac{a}{b}$ cannot be simplified further, as the fraction could be divided by $2$ if they are both even. The only assumption we made is that $\sqrt{2}$ could be written as $\frac{a}{b}$ with $a$ and $b$ integers and it lead us to a contradiction. Therefore the assumption itself cannot be true and $\sqrt{2}$ cannot be written as a fraction of integers.
+
+\section{Derivation of solutions for quadratic equations}
+\label{DeriveDiscr}
+
+\noindent The objective is to find the solution(s) of
+\begin{equation*}
+a_2 x^2 + a_1 x + a_0 = 0
+\end{equation*}
+if they exist. We start by dividing the equation by $a_2$ which gives
+\begin{equation*}
+x^2 + \frac{a_1}{a_2} x + \frac{a_0}{a_2} = 0
+\end{equation*}
+We now add and subtract $\frac{a_1^2}{4 a_2^2}$ from the LHS. Of course adding and subtracting the same number does not alter anything.
+\begin{equation*}
+x^2 + \frac{a_1}{a_2} x + \frac{a_1^2}{4 a_2^2} - \frac{a_1^2}{4 a_2^2} + \frac{a_0}{a_2} = 0
+\end{equation*}
+The two last terms are subtracted from the both sides which yields
+\begin{equation*}
+x^2 + \frac{a_1}{a_2} x + \frac{a_1^2}{4 a_2^2} = \frac{a_1^2}{4 a_2^2} - \frac{a_0}{a_2}
+\end{equation*}
+This can be rewritten as
+\begin{equation*}
+\left( x + \frac{a_1}{2a_2} \right)^2 = \frac{1}{4a_2^2} \left( a_1^2 - 4 a_2 a_0 \right)
+\end{equation*}
+\noindent To convince yourself of this, try working out these expressions. For the LHS use the formula $(a+b)^2 = a^2 + 2ab + b^2$, with in this case $a=x$ and $b = \frac{a_1}{2a_2}$. For the RHS use distributivity: $a (b+c) = ab + ac$. Once you are convinced that it is correct, take the square root of both sides (and remember that taking the square root has 2 solutions) which gives
+\begin{equation*}
+x + \frac{a_1}{2a_2}  = \pm \frac{1}{2a_2} \sqrt{ a_1^2 - 4 a_2 a_0 }
+\end{equation*}
+Isolating $x$ on the LHS leaves us with
+\begin{equation*}
+x =   \frac{-a_1  \pm \sqrt{ a_1^2 - 4 a_2 a_0 }}{2a_2}
+\end{equation*}
+Defining the discriminant as $\Delta = a_1^2 - 4 a_2 a_0$ we finally find
+\begin{equation*}
+x =   \frac{-a_1  \pm \sqrt{ \Delta }}{2a_2}
+\end{equation*}
+In the step in which the square root of the equation was taken, it was assumed that we were allowed to do so. But remember that the square root of negative numbers does not exist (in the reals). In other words we are not allowed to take the square root and therefore no solutions exist if $\Delta < 0$. If $\Delta = 0$ than both solutions give the same result, namely $x = \frac{-a_1}{2 a_2}$. And if $\Delta > 0$ then both solutions are distinct and given by $x_{\pm} = \frac{-a_1 \pm \sqrt{\Delta}}{2a_2}$.
+
+%\subsection{Functions of several variables}
+
+%\subsubsection{Composition of functions}

@@ -1,0 +1,329 @@
+\chapter{Number sets}
+\label{Set_Theory}
+
+\section{How far can you count?}
+
+\noindent You count the pebbles around you at the coast: 1, 2, 3...\\
+The temperature takes a short dip in winter to a frisk -20 degrees centigrade...\\
+A dress of 130€ is sold at a 25\% discount and therefore costs 97,50€... \\
+
+\noindent Those are the numbers you discover in your first years of life. Mathematicians gave names to the different kinds of numbers they studied and defined sets in order to classify them. In this chapter we will discuss the natural numbers, the integers, the rationals and the reals. The imaginary and complex numbers will be left for a later chapter when we will have developed the tools necessary to appreciate them better.
+
+\subsection{From natural to rational}
+\noindent The simplest numbers used for counting are called natural numbers. The set of all natural numbers is denoted as
+\begin{equation}
+	\mathbb{N} = \left\{ 0, 1, 2, \cdots \right\}
+\end{equation}
+The number 120 is an element of $\mathbb{N}$: $ 120 \in \mathbb{N}$.\\
+The number -5 is not an element of $\mathbb{N}$: $ -5 \notin \mathbb{N}$.\\
+
+\noindent This set therefore clearly does not contain all the numbers you know. By including the negative counterparts of the natural numbers we get the set of all integers (sometimes also referred to as the whole numbers):
+\begin{equation}
+	\mathbb{Z} = \left\{\cdots,-3, -2, -1, 0, 1, 2, 3, \cdots \right\}
+\end{equation}
+This set contains all the elements of $\mathbb{N}$. We say that $\mathbb{N}$ is a subset of $\mathbb{Z}$: $\mathbb{N} \subset \mathbb{Z}$.\\ The opposite on the other hand is not true as not all elements of $\mathbb{Z}$ are elements of $\mathbb{N}$: $\mathbb{Z} \not\subset \mathbb{N}$. \\
+
+\noindent A question which may seem weird at first is whether both sets contain an equal number of elements. Intuitively you may think that of course they do, as both sets contain an infinite number of elements. Your intuition may on the other hand suggest that $\mathbb{Z}$ contains more elements as it contains all the elements of $\mathbb{N}$ and a bunch of others. So which one is it? As we will see further on, finding an answer to this question requires a subtle understanding of how to compare the size of sets\footnote{By the size of a set I mean the number of elements in the set.}.\\
+
+\noindent Let us first get back to the sets of numbers. We already have all the whole numbers but are still missing for instance the number $0,45$. It is not an integer: $0,45\notin \mathbb{Z}$ (and consequently $ 0,45 \notin \mathbb{N}$). We define the set of all rational numbers\footnote{Do not let the notation for sets scare you. A set is often denoted as $A = \left\{ x \; | \; \textit{some condition(s) that need(s) to be met} \right\}$. This is simply a mathematical notation for a set named $A$, whose elements represented by the generic $x$ need to obey all the conditions stated after the $|$ sign. For instance $\left\{ y \; | \; y \in \mathbb{N}, y\textit{ is a multiple of 3 and } y <20 \right\}$ is the set $\left\{ 0,3,6,9,12,15,18 \right\}$.}:
+\begin{equation}
+	\mathbb{Q} = \left\{ \frac{a}{b} \: | \: a,b \in \mathbb{Z} \textit{ and } b \neq 0 \right\}
+\end{equation}
+In words, $\mathbb{Q}$ is the set of all numbers of the form: $a$ divided by $b$ where $a$ and $b$ are elements of $\mathbb{Z}$ and $b \neq 0$. The number $5$ is an element of $\mathbb{Q}$ because $5 = \frac{10}{2}$ and both $10$ and $2$ are elements of $\mathbb{Z}$. The number $-13$ is an element of $\mathbb{Q}$ because $-13 = \frac{39}{-3}$ and both $39$ and $-3$ are elements of $\mathbb{Z}$.\\
+
+\noindent Take any element $z$ in $\mathbb{Z}$. This element can be written as $\frac{z}{1}$. Therefore, $\mathbb{Z} \subset \mathbb{Q}$ and consequently $\mathbb{N} \subset \mathbb{Q}$. But $\mathbb{Q}$ contains elements which are not in $\mathbb{Z}$ such as $0,5$ and $-89,402$ or $3,3333333\cdots$. Each of these can be written as a fraction where both numerator and denominator are in $\mathbb{Z}$:
+\begin{eqnarray}
+	\frac{6}{12} \; , & \frac{89\:402}{-1\:000} \; , & \frac{10}{3} \nonumber
+\end{eqnarray}
+
+\subsubsection{properties of rational numbers}
+
+\begin{enumerate}
+
+	\item Every element of $\mathbb{Q}$ can be represented in decimal form, simply by explicitly dividing the numerator by the denominator:
+	\begin{eqnarray}
+	 \frac{17}{7} = 2,43\cdots \nonumber
+	\end{eqnarray}
+\item Every element of $\mathbb{Q}$ has in its decimal representation an infinitely repeating tail. Let us look at a number of examples (the infinitely repeating \textbf{period} is underlined and in bold):
+	\begin{itemize}
+		\item $14 = 14,\textbf{\underline{0}}000\cdots$
+		\item $3,28 = 3,28\textbf{\underline{0}}000\cdots$
+		\item $\frac{2}{3} = 0,\textbf{\underline{6}}6666\cdots $
+		\item $ \frac{-119}{37} = -3,\textbf{\underline{216}}\:216\:216 \cdots $
+\item $ \frac{354 \: 037}{1\: 650 \:000} = 0,214 \: 56\textbf{\underline{7 \: 8}}78 \:787\cdots $ 
+\end{itemize}
+\item Every decimal number with an infinitely repeating period can be written as a fraction of integers and is therefore an element of $\mathbb{Q}$. Let us take for example the number $112,897\:\textbf{456}\:456\:456\cdots $. The infinitely repeating group is $456$. Let us give our chosen number a name, $x$ will most probably do. We can do the following calculation:
+\begin{eqnarray}
+1\: 000 \: x & = & 112\:897,456\:456\:456\:456\cdots \nonumber \\
+1 \: 000 \: 000 \: x & = & 112\:897\:456,456\:456\:456\cdots \nonumber
+\end{eqnarray}
+Therefore
+\begin{eqnarray}
+1 \: 000 \: 000 \: x - 1\: 000 \: x & = & 999 \: 000 \: x \nonumber\\ 
+ & = & 112\:897\:456,456\:456\:456\cdots - 112\:897,456\:456\:456\:456\cdots \nonumber\\
+& = & 112 \: 784 \: 559 \nonumber
+\end{eqnarray}
+And so we find that $x$ can be written as
+$$
+x = \frac{112 \: 784 \: 559}{990\:000}
+$$
+\item Every rational number can be represented by (infinitely) many equivalent fractions. For instance:
+$$
+-0,5 = \frac{-1}{2}= \frac{4}{-8}= \frac{50}{-100}= \frac{-9}{18} = \cdots
+$$
+Each of these fractions represents the same element of $\mathbb{Q}$.
+	
+	\item Between any two rational numbers there are infinitely many other rationals. As an example let us take 2 elements of $\mathbb{Q}$, say $\frac{7}{3}$ and $\frac{8}{3}$ (the logic of the argument would be the same no matter which two rational numbers we choose). The difference between our chosen numbers is $\frac{1}{3}$. Therefore, by adding any rational number smaller than $\frac{1}{3}$ to the number $\frac{7}{3}$ we get a rational number larger than $\frac{7}{3}$ and smaller than $\frac{8}{3}$. This means that all the following are between our 2 chosen numbers:
+	\begin{eqnarray}
+	\frac{7}{3} + \frac{1}{4} & = & \frac{31}{12} \nonumber \\
+	\frac{7}{3} + \frac{1}{5} & = & \frac{38}{15} \nonumber \\
+	\frac{7}{3} + \frac{1}{6} & = & \frac{45}{18} \nonumber \\
+	\frac{7}{3} + \frac{1}{7} & = & \frac{52}{21} \nonumber \\
+	& \cdots & \nonumber
+	\end{eqnarray}
+	
+	\item A corollary of the previous is that for any rational number, it is possible to find another rational number that is arbitrarily close to it.
+	
+\end{enumerate}
+
+\subsection{Real numbers}
+\label{RealNumbersSet}
+
+\noindent We saw above that every rational number has the property that its tail (i.e. its decimal part) has an infinitely repetitive period. This repeating sequence can be made up of just $1$ digit or of many. It can also start immediately after the decimal point or at any other point afterwards. But it will, somewhere after the decimal point, have a sequence of digits which endlessly repeats. It follows that numbers which at no point become repetitive are not included in $\mathbb{Q}$ and cannot be written as the ratio of integers. Examples of such numbers are\footnote{That the second and third examples do not have a repeating tail is straightforward. But how do we know that $\pi$ and $\sqrt{2}$ are irrational? For the latter I give a relatively simple proof in section \ref{proofsqrt2}. For $\pi$ the proof is much more involved and goes beyond the scope of the text. I nevertheless give a proof in appendix \ref{Irrational_pi}, which should be read at your own risk}:
+\begin{gather*}
+\pi \\
+1,1\;2\; 3\;4\;5\;6\;7\;8\;9\;10\;11\;12\;13\cdots \\
+ 0,1\:10\:100\:1000\:10000\:100000 \\
+ \sqrt{2}
+\end{gather*}
+\noindent Such numbers are known as irrational numbers and together with the rationals they form the set of the real numbers $\mathbb{R}$.
+
+\subsubsection{properties of real numbers}
+
+\begin{enumerate}
+	\item Every element of $\mathbb{R}$ can be represented in decimal form. The real numbers include all the decimal numbers with as well as without an infinitely repeating tail.
+	
+	\item Between any two real numbers there are infinitely many other real numbers, as was the case for the rationals.
+	
+	\item Take any real number $x$. It is possible to find a rational number arbitrarily close to $x$. This means that for any non-zero distance $\epsilon$ (pronounced ep-si-lon), no matter how small, there exists a rational number within less than a distance $\epsilon$ from $x$. As an example, let us take the real number $x = 1.1\;2\;3\;4\;5\;6\;7\;8\;9\;10\;11\;12\cdots$. Can we find a rational number that differs less than $0.01$ from $x$? Well, the number $1.1200000\cdots$ is a rational number (because it has an infinitely repeating tail of zeroes). The difference between $x$ and this number is $0.00345\cdots < 0.01$. So there indeed exists a rational number closer to $x$ than $0.01$. But we could have chosen the distance as small as we wanted. For every distance that we choose, we just have to follow sufficient digits after the decimal point of $x$ before attaching an infinite tail of zeroes to it, to find a rational number which is closer than our chosen distance.
+\end{enumerate}
+
+\section{Counting infinities}
+
+\noindent Now that we know $\mathbb{N}$, $\mathbb{Z}$, $\mathbb{Q}$ and $\mathbb{R}$, we return to the question of whether they all have the same number of elements. We will tackle it by a little detour, by first asking ourselves how we could determine whether two finite sets have an equal number of elements.
+
+\subsection{Counting the finite}
+ 
+\noindent A set can be represented as below:
+
+\begin{center}
+\begin{tikzpicture}[line width=1pt,>=latex]
+\sffamily
+\node (a1) {Paris};
+\node[below=0.3cm of a1] (a2) {Brussels};
+\node[below=0.3cm of a2] (a3) {New York};
+\node[below=0.3cm of a3] (a4) {Kyoto};
+
+\node[right=4cm of a1] (aux1) {};
+\node[below= 0.0055cm of aux1] (b1) {USA};
+\node[below=0.3cm of b1] (b2) {France};
+\node[below=0.3cm of b2] (b3) {Belgium};
+\node[below=0.3cm of b3] (b4) {Japan};
+\node[below=0.3cm of b4] (b5) {Russia};
+\node[below=0.005cm of b5] (aux2) {};
+
+\node[shape=ellipse,draw=myblue,minimum size=3cm,fit={(a1) (a4)}] {};
+\node[shape=ellipse,draw=myblue,minimum size=3cm,fit={(aux1) (aux2)}] {};
+
+\node[below=1cm of a4,font=\color{myblue}\Large\bfseries] {Cities};
+\node[below=1cm of aux2,font=\color{myblue}\Large\bfseries] {Countries};
+
+\draw[->,myblue] (a1) -- (b2.170);
+\draw[->,myblue] (a2) -- (b3.170);
+\draw[->,myblue] (a3) -- (b1.170);
+\draw[->,myblue] (a4.20) -- (b4.170);
+\end{tikzpicture}
+\end{center}
+ 
+\noindent The set on the left has 4 elements, all are cities in the world, and the one on the right has 5 elements all of them countries. I drew a \textbf{relation} between the two sets, represented by all the arrows\footnote{The set of departure is called the \textbf{domain}, in this case the set of the cities. The destination set is called the \textbf{codomain}}. The relation depicted is "\textit{is a city in}". But I could have chosen a different relation, for instance "is on the same continent as", which looks like below:
+\begin{center}
+\begin{tikzpicture}[line width=1pt,>=latex]
+\sffamily
+\node (a1) {Paris};
+\node[below= 0.3cm of a1] (a2) {Brussels};
+\node[below=0.3cm of a2] (a3) {New York};
+\node[below=0.3cm of a3] (a4) {Kyoto};
+
+\node[right=4cm of a1] (aux1) {};
+\node[below= 0.0055cm of aux1] (b1) {USA};
+\node[below=0.3cm of b1] (b2) {France};
+\node[below=0.3cm of b2] (b3) {Belgium};
+\node[below=0.3cm of b3] (b4) {Japan};
+\node[below=0.3cm of b4] (b5) {Russia};
+\node[below=0.005cm of b5] (aux2) {};
+
+\node[shape=ellipse,draw=myblue,minimum size=3cm,fit={(a1) (a4)}] {};
+\node[shape=ellipse,draw=myblue,minimum size=3cm,fit={(aux1) (aux2)}] {};
+
+\node[below=1cm of a4,font=\color{myblue}\Large\bfseries] {Cities};
+\node[below=1cm of aux2,font=\color{myblue}\Large\bfseries] {Countries};
+
+\draw[->,myblue] (a1) -- (b2.170);
+\draw[->,myblue] (a1) -- (b3.170);
+\draw[->,myblue] (a1) -- (b5.170);
+\draw[->,myblue] (a2) -- (b2.170);
+\draw[->,myblue] (a2) -- (b3.170);
+\draw[->,myblue] (a2) -- (b5.170);
+\draw[->,myblue] (a3) -- (b1.170);
+\draw[->,myblue] (a4.20) -- (b4.170);
+\end{tikzpicture}
+\end{center}
+\noindent Now that I've introduced the notion of "relation between sets", we can approach the question of equal sizes. The sets of cities and of countries above clearly do not have an equal number of elements. We can simply count them: $4$ in the domain and $5$ in the codomain.\\
+
+\noindent Let us now consider a more abstract example:
+\begin{center}
+\begin{tikzpicture}[line width=1pt,>=latex]
+\sffamily
+\node (a1) {a};
+\node[below=0.3cm of a1] (a2) {b};
+\node[below=0.3cm of a2] (a3) {c};
+\node[below=0.3cm of a3] (a4) {d};
+\node[below=0.3cm of a4] (a5) {e};
+
+\node[right=4cm of a1] (aux1) {};
+\node[below= 0.0055cm of aux1] (b1) {x};
+\node[below=0.3cm of b1] (b2) {y};
+\node[below=0.3cm of b2] (b3) {z};
+\node[below=0.3cm of b3] (b4) {t};
+\node[below=0.3cm of b4] (b5) {u};
+\node[below=0.005cm of b5] (aux2) {};
+
+\node[shape=ellipse,draw=myblue,minimum size=3cm,fit={(a1) (a5)}] {};
+\node[shape=ellipse,draw=myblue,minimum size=3cm,fit={(aux1) (aux2)}] {};
+
+\node[below=1.2cm of a5,font=\color{myblue}\Large\bfseries] {A};
+\node[below=1.2cm of aux2,font=\color{myblue}\Large\bfseries] {B};
+\end{tikzpicture}
+\end{center}
+\noindent We have here a domain and codomain, each with $5$ elements. Let us consider two relations between those sets. The first one is:\\
+\begin{center}
+\begin{tikzpicture}[line width=1pt,>=latex]
+\sffamily
+\node (a1) {a};
+\node[below=0.3cm of a1] (a2) {b};
+\node[below=0.3cm of a2] (a3) {c};
+\node[below=0.3cm of a3] (a4) {d};
+\node[below=0.3cm of a4] (a5) {e};
+
+\node[right=4cm of a1] (aux1) {};
+\node[below= 0.0055cm of aux1] (b1) {x};
+\node[below=0.3cm of b1] (b2) {y};
+\node[below=0.3cm of b2] (b3) {z};
+\node[below=0.3cm of b3] (b4) {t};
+\node[below=0.3cm of b4] (b5) {u};
+\node[below=0.005cm of b5] (aux2) {};
+
+\node[shape=ellipse,draw=myblue,minimum size=3cm,fit={(a1) (a5)}] {};
+\node[shape=ellipse,draw=myblue,minimum size=3cm,fit={(aux1) (aux2)}] {};
+
+\node[below=1.2cm of a5,font=\color{myblue}\Large\bfseries] {A};
+\node[below=1.2cm of aux2,font=\color{myblue}\Large\bfseries] {B};
+
+\draw[->,myblue] (a1) -- (b2.170);
+\draw[->,myblue] (a2) -- (b2.170);
+\draw[->,myblue] (a3) -- (b2.170);
+\draw[->,myblue] (a4) -- (b2.170);
+\draw[->,myblue] (a5) -- (b2.170);
+\end{tikzpicture}
+\end{center}
+
+\noindent From each element in $A$ there is exactly 1 arrow leaving. In $B$ all arrows arrive in $y$. None of the other elements in $B$ has an arrow arriving at it.\\
+
+\noindent The second relation we consider between $A$ and $B$ is:\\
+\begin{center}
+\begin{tikzpicture}[line width=1pt,>=latex]
+\sffamily
+\node (a1) {a};
+\node[below=0.3cm of a1] (a2) {b};
+\node[below=0.3cm of a2] (a3) {c};
+\node[below=0.3cm of a3] (a4) {d};
+\node[below=0.3cm of a4] (a5) {e};
+
+\node[right=4cm of a1] (aux1) {};
+\node[below= 0.0055cm of aux1] (b1) {x};
+\node[below=0.3cm of b1] (b2) {y};
+\node[below=0.3cm of b2] (b3) {z};
+\node[below=0.3cm of b3] (b4) {t};
+\node[below=0.3cm of b4] (b5) {u};
+\node[below=0.005cm of b5] (aux2) {};
+
+\node[shape=ellipse,draw=myblue,minimum size=3cm,fit={(a1) (a5)}] {};
+\node[shape=ellipse,draw=myblue,minimum size=3cm,fit={(aux1) (aux2)}] {};
+
+\node[below=1.2cm of a5,font=\color{myblue}\Large\bfseries] {A};
+\node[below=1.2cm of aux2,font=\color{myblue}\Large\bfseries] {B};
+
+\draw[->,myblue] (a1) -- (b3.170);
+\draw[->,myblue] (a2) -- (b2.170);
+\draw[->,myblue] (a3) -- (b4.170);
+\draw[->,myblue] (a4) -- (b1.170);
+\draw[->,myblue] (a5) -- (b5.170);
+\end{tikzpicture}
+\end{center}
+
+\noindent This relation has the special property that exactly 1 arrow leaves each element in the domain and exactly 1 arrow arrives at each element of the codomain. A relation with this property is called a \textbf{bijection}.\\
+
+\noindent If 2 sets have an equal number of elements, it is possible to find a bijection between them. On the other hand, if they do not contain an equal number of elements it is impossible to find a bijection between them. It seems reasonable that if the number of elements in the sets is different, it will be impossible to find a relation where exactly 1 arrow leaves every element in the domain and exactly 1 arrow arrives at each element in the codomain.\\
+
+\noindent \textbf{Mistake to avoid:} The claim is that a bijection can be found if both sets have an equal number of elements. However, this does \textbf{not} imply that every relation between both sets is a bijection. The first relation we considered above between $A$ and $B$ is clearly not a bijection despite $A$ and $B$ each containing $5$ elements.
+
+\subsection{Counting the infinite}
+\label{Cantor_Tangent}
+
+\noindent For infinite sets we use the same logic. We say that if it is possible to find a bijection between 2 infinite sets, they contain the same number of elements\footnote{The number of elements is of course infinite, and not actually a number. Mathematicians therefore invented the word "`cardinality"'. For finite sets the cardinality of a set is equal to its number of elements. Infinite sets are said to have the same cardinality if they "`contain the same number of elements"'}. The question whether $\mathbb{N}$ and $\mathbb{Z}$ have the same number of elements is reduced to determining whether a bijection between them exists.\\
+
+\noindent One possible relation between them is the following:
+\begin{eqnarray*}
+0 & \rightarrow & 0  \\
+1 & \rightarrow & 1  \\
+2 & \rightarrow & -1 \\
+3 & \rightarrow & 2  \\
+4 & \rightarrow & -2  \\
+5 & \rightarrow & 3  \\
+ & \cdots & 
+\end{eqnarray*}
+On the left are the elements of $\mathbb{N}$ and on the right those of $\mathbb{Z}$. There is exactly 1 arrow leaving each element of $\mathbb{N}$ and exactly 1 arrow arriving at each element of $\mathbb{Z}$. This relation is therefore a bijection, which proves that the two sets have the "`same number of elements"'.\\
+
+\noindent You could very well think that it is possible to find a bijection between any 2 infinite sets, after all they're both infinite. In that case you would be wrong.\\
+
+\noindent It turns out that it is impossible to find a bijection between $\mathbb{N}$ and $\mathbb{R}$. But how could we prove that a bijection between them does not exist? There are infinitely many relations we could write down. How can we go through all of them and be sure we didn't miss any, before concluding that there does not exist any bijection between them?\\
+
+\noindent We will divide the argument into 2 parts. The first one will be to prove there cannot exist a bijection between $\mathbb{N}$ and $\left[ 0 , 1 \right[$ which is the set of all real numbers between $0$ and $1$ (including $0$ but excluding $1$)\footnote{The set $\left[ 0,1 \right[$ includes $0$ but not $1$, while $\left] 0,1 \right]$ includes $1$ but not $0$. Finally, $\left] 0,1 \right[$ excludes them both.}. From this we conclude that these 2 sets do not have the same "`number of elements"'. The second part of the proof will be to show that there exists a bijection between $\mathbb{R}$ and $\left[  0,1 \right[$. From which we conclude that these two sets do have the same number of elements. Taking these two parts together does indeed prove that $\mathbb{N}$ and $\mathbb{R}$ do not have the same "`number of elements"'.\\
+
+\noindent We start part 1 of the argument by assuming there does exist a bijection between $\mathbb{N}$ and $\left[ 0,1 \right[$. We will see that this assumption will lead to an impossible result, which means that the assumption itself cannot be true.\\
+
+\noindent So let us assume such a bijection exists. It can be represented as:
+\begin{eqnarray*}
+0 & \rightarrow & x_0  \\
+1 & \rightarrow & x_1  \\
+2 & \rightarrow & x_2 \\
+3 & \rightarrow & x_3  \\
+4 & \rightarrow & x_4  \\
+5 & \rightarrow & x_5  \\
+ & \cdots & 
+\end{eqnarray*}
+The numbers $x_0, x_1,\cdots$ are all real numbers between $0$ and $1$ (excluding $1$ itself), all different from each other (otherwise there would be 2 arrows arriving at the same element of $[0,1[$ and it wouldn't be a bijection) and each of them can be written in decimal form. As we assumed the relation is a bijection, exactly 1 arrow arrives at each element of $\left[ 0,1 \right[$, and it should therefore not be possible to find any number between 0 and 1 that does not appear in our list of $x_i$'s.\\
+
+\noindent I will now find a number that does not appear in the list by the following method:
+\begin{enumerate}
+\item Call the number between 0 and 1 that we are looking for $x$. We know $x$ starts of with a $0$ before the decimal point (because it's between 0 and 1). 
+\item If the first decimal of $x_0$ is not a 5, we choose the first decimal of $x$ equal to 5. Otherwise we choose the first decimal of $x$ equal to 4.
+\item  If the second decimal of $x_1$ is not a 5, we choose the second decimal of $x$ equal to 5. Otherwise we choose the second decimal of $x$ equal to 4.
+\item If the third decimal of $x_2$ is not a 5, we choose the third decimal of $x$ equal to 5. Otherwise we choose the third decimal of $x$ equal to 4.\\
+$\cdots$
+\end{enumerate}
+\noindent This procedure is known as Cantor's diagonalization. The number $x$ we end up with is clearly a number between 0 and 1. It differs from $x_0$ because their first decimal is unequal. It differs from $x_1$ because their second decimal is unequal. It differs from $x_{37}$ because their thirty-eighth decimal is unequal, etc. It thus differs from each of the $x_i$'s. That means that we found an element of $\left[ 0 , 1 \right[$ which differs from all of the $x_i$'s and therefore does not appear in the list. In other words it does not have an arrow arriving at it. Which means the relation we assumed to be a bijection is not a bijection. A relation cannot be a bijection and not a bijection at the same time. We conclude that our initial assumption is wrong. As our argument holds for any relation between $\mathbb{N}$ and $\left[ 0,1 \right[$ there can not exist a bijection between them.\\
+
+\noindent This concludes part 1 of the proof. We still need to do part 2, which is to prove that $\mathbb{R}$ and $\left[ 0,1 \right[$ do have the same size. I will leave this final step for after we handle trigonometric functions in section (\ref{TrigFuncs}) because one of them (the tangent) will be a natural candidate for the bijection between the two sets.
+
+% Maybe add at later time also proof that pi is irrational
